@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const CardListContainer = styled.div`
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-`;
-
 export const CarInfoCardLayout = styled.article`
   width: 100%;
   height: 280px;
