@@ -16,24 +16,8 @@ type CarInfoCardProps = {
   carInfoList: CarInfoType;
 };
 
-const comp: Record<number, number> = {
-  4: 1000,
-  5: 10000,
-  6: 100000,
-};
-
-const tt = (distance: number) => {
-  const leng = distance.toString().length;
-  const value = distance / comp[leng];
-  const rest = distance % comp[leng];
-  console.log("distance: ", distance);
-  console.log("value: ", value);
-  console.log("rest: ", rest);
-};
-
 const CarInfoCard = ({ carInfoList }: CarInfoCardProps) => {
   const carInfos = new Car(carInfoList);
-  tt(carInfos.drivingDistance);
 
   return (
     <CarInfoCardLayout>
@@ -47,9 +31,11 @@ const CarInfoCard = ({ carInfoList }: CarInfoCardProps) => {
           {carInfos.round()}
           <CarUnit>원</CarUnit>
         </CarPrice>
-        <CarInfo>{`${carInfos.year} | ${
-          carInfos.drivingDistance
-        }만 | ${carInfos.regionGroups.map((region) => region)}`}</CarInfo>
+        <CarInfo>{`${
+          carInfos.year
+        } | ${carInfos.driveFormat()} | ${carInfos.regionGroups.map(
+          (region) => region
+        )}`}</CarInfo>
       </CarInfoContainer>
     </CarInfoCardLayout>
   );
