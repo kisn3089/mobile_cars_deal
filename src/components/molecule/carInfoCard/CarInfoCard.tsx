@@ -1,5 +1,6 @@
 import { CarInfoType } from "@/types/CarInfo.type";
 import {
+  CarDiscount,
   CarInfo,
   CarInfoCardLayout,
   CarInfoContainer,
@@ -31,8 +32,11 @@ const CarInfoCard = ({ carInfoList, hasLoading }: CarInfoCardProps) => {
           <CarTag>{carInfos.carTypeTags.map((tag) => tag)}</CarTag>
         </CarNameTag>
         <CarPrice>
-          {carInfos.round()}
+          {carInfos.discount()}
           <CarUnit>원</CarUnit>
+          {carInfos.discountPercent > 0 && (
+            <CarDiscount>{`${carInfos.round()}원`}</CarDiscount>
+          )}
         </CarPrice>
         <CarInfo>{`${
           carInfos.year

@@ -41,6 +41,14 @@ export const CarPrice = styled.p`
   color: ${({ theme }) => theme.palette.primary.brand};
 `;
 
+export const CarDiscount = styled.span`
+  font-style: italic;
+  font-size: ${({ theme }) => theme.fontSize[14]};
+  color: ${({ theme }) => theme.palette.gray.gray300};
+  margin-left: 12px;
+  text-decoration: line-through;
+`;
+
 export const CarUnit = styled.span`
   font-size: ${({ theme }) => theme.fontSize[16]};
   font-weight: ${({ theme }) => theme.fontWeight[400]};

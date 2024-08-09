@@ -26,9 +26,10 @@ export class Car {
   }
 
   /* price를 100자리에서 반올림해서 반환하는 메서드 ( 원화기준으로 콤마 ) */
-  round(): string {
+  round(value?: number): string {
+    const amount = value || this.price;
     const base = Math.pow(10, 2);
-    return (Math.round(this.price / base) * base).toLocaleString("ko-KR");
+    return (Math.round(amount / base) * base).toLocaleString("ko-KR");
   }
 
   driveFormat(): string {
@@ -55,5 +56,13 @@ export class Car {
       subValue === "0" ? `${baseUnit}` : ` ${subValue}천${baseUnit}`;
 
     return `${primaryValue}${unit}${subUnit}`;
+  }
+
+  discount() {
+    if (this.discountPercent === 0) return this.round(this.price);
+
+    const discounting = this.discountPercent / 100;
+    const discountPrice = this.price * (1 - discounting);
+    return this.round(discountPrice);
   }
 }
