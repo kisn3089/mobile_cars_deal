@@ -1,7 +1,7 @@
 import { AllCarsContainer, FigureTitle } from "./AllCars.style";
 import CarInfoCard from "@/components/molecule/carInfoCard/CarInfoCard";
-import CarListLoading from "@/components/molecule/loading/carListLoading/CarListLoading";
-import { CarInfoType, defaultCarInfo } from "@/types/CarInfo.type";
+import Skeleton from "@/components/molecule/skeleton/Skeleton";
+import { CarInfoType, SkeletonCarInfo } from "@/types/CarInfo.type";
 // import { LIMIT } from "@/util/contstants";
 
 // type AllCarsProps = {
@@ -25,27 +25,27 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
   return (
     <AllCarsContainer>
       <FigureTitle>{"모든 차량"}</FigureTitle>
-      <CarListLoading
-        hasLoading={hasLoading}
-        fallback={[1, 2, 3, 4].map((_, i) => (
+      <Skeleton hasLoading={hasLoading} fallback={<SkeletonData />}>
+        {carList.map((carItem: CarInfoType) => (
           <CarInfoCard
-            key={i}
-            carInfoList={defaultCarInfo}
+            key={carItem.carClassId}
+            carInfoList={carItem}
             hasLoading={hasLoading}
           />
-        ))}>
-        <>
-          {carList.map((carItem: CarInfoType) => (
-            <CarInfoCard
-              key={carItem.carClassId}
-              carInfoList={carItem}
-              hasLoading={hasLoading}
-            />
-          ))}
-        </>
-      </CarListLoading>
+        ))}
+      </Skeleton>
     </AllCarsContainer>
   );
 };
 
 export default AllCars;
+
+const SkeletonData = () => {
+  return (
+    <>
+      {[1, 2, 3, 4].map((_, i) => (
+        <CarInfoCard key={i} carInfoList={SkeletonCarInfo} hasLoading={true} />
+      ))}
+    </>
+  );
+};

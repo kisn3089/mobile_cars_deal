@@ -5,6 +5,7 @@ import {
   PaletteType,
   TransitionType,
   TransTimeType,
+  AnimationType,
 } from "./theme";
 
 declare module "styled-components" {
@@ -14,5 +15,6 @@ declare module "styled-components" {
     palette: PaletteType;
     transition: TransitionType;
     transTime: TransTimeType;
+    animation: AnimationType;
   }
 }

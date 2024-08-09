@@ -20,13 +20,13 @@ export const RequestMore = styled.button`
     `${theme.transTime.short} ${theme.transition.smooth}`};
 
   &:active {
-    width: 90%;
-    height: 44px;
+    transform: scale(0.9);
   }
 
   &:disabled {
     background-color: ${({ theme }) => theme.palette.gray.gray200};
     width: 100%;
     height: 48px;
+    transform: scale(1);
   }
 `;

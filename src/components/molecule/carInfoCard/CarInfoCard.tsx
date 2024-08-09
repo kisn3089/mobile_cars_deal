@@ -8,6 +8,7 @@ import {
   CarPrice,
   CarTag,
   CarUnit,
+  DeadSpace,
 } from "./CarInfoCard.style";
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
@@ -51,14 +52,14 @@ export default CarInfoCard;
 const LoadingCarList = () => {
   return (
     <CarInfoCardLayout>
-      <Img src={""} alt={"loading"} size="large" />
+      <DeadSpace className="space" />
       <CarInfoContainer>
         <CarNameTag>
-          <CarName>{"qweq"}</CarName>
-          <CarTag>{"qqqweqe"}</CarTag>
+          <CarName>{""}</CarName>
+          <CarTag>{""}</CarTag>
         </CarNameTag>
-        <CarPrice>{"012312"}</CarPrice>
-        <CarInfo>{"12313132wqe"}</CarInfo>
+        <CarPrice>{""}</CarPrice>
+        <CarInfo>{""}</CarInfo>
       </CarInfoContainer>
     </CarInfoCardLayout>
   );

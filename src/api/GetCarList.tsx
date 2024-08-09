@@ -11,7 +11,7 @@ export const GetCarList = (page: number | string = 1) =>
       new Promise((resolve, reject) => {
         setTimeout(async () => {
           resolve(coreAxios.get("/carClasses"));
-        }, 300000);
+        }, 3000);
       }),
     // coreAxios.get("/carClasses"),
 

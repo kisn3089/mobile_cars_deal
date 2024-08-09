@@ -1,11 +1,13 @@
 import { DefaultTheme } from "styled-components";
 import { toRem } from "../util/toRem";
+import { skeletonEffect } from "./animation";
 
 export type FontSizeType = typeof fontSize;
 export type FontWeightType = typeof fontWeight;
 export type PaletteType = typeof palette;
 export type TransitionType = typeof transition;
 export type TransTimeType = typeof transTime;
+export type AnimationType = typeof animation;
 
 const fontSize = {
   14: toRem(14),
@@ -37,10 +39,15 @@ const palette = {
 
 const transTime = {
   short: "0.3s",
+  long: "1.2s",
 };
 
 const transition = {
   smooth: "cubic-bezier(0.17, 0.67, 0.58, 0.93)",
+};
+
+const animation = {
+  skeletonEffect: skeletonEffect,
 };
 
 export const theme: DefaultTheme = {
@@ -49,4 +56,5 @@ export const theme: DefaultTheme = {
   palette,
   transition,
   transTime,
+  animation,
 };
