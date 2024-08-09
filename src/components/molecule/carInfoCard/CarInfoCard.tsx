@@ -1,3 +1,4 @@
+import { CarInfoType } from "@/types/CarInfo.type";
 import {
   CarInfo,
   CarInfoCardLayout,
@@ -9,20 +10,46 @@ import {
   CarUnit,
 } from "./CarInfoCard.style";
 import Img from "@/components/atom/img/Image";
+import { Car } from "@/util/method/carInfoMethod";
 
-const CarInfoCard = () => {
+type CarInfoCardProps = {
+  carInfoList: CarInfoType;
+};
+
+const comp: Record<number, number> = {
+  4: 1000,
+  5: 10000,
+  6: 100000,
+};
+
+const tt = (distance: number) => {
+  const leng = distance.toString().length;
+  const value = distance / comp[leng];
+  const rest = distance % comp[leng];
+  console.log("distance: ", distance);
+  console.log("value: ", value);
+  console.log("rest: ", rest);
+};
+
+const CarInfoCard = ({ carInfoList }: CarInfoCardProps) => {
+  const carInfos = new Car(carInfoList);
+  tt(carInfos.drivingDistance);
+
   return (
     <CarInfoCardLayout>
-      <Img src="/img/SLASH21.png" alt="slash" size="large" />
+      <Img src={carInfos.image} alt={carInfos.carClassName} size="large" />
       <CarInfoContainer>
         <CarNameTag>
-          <CarName>모닝</CarName>
-          <CarTag>인기</CarTag>
+          <CarName>{carInfos.carModel}</CarName>
+          <CarTag>{carInfos.carTypeTags.map((tag) => tag)}</CarTag>
         </CarNameTag>
         <CarPrice>
-          120,000<CarUnit>원</CarUnit>
+          {carInfos.round()}
+          <CarUnit>원</CarUnit>
         </CarPrice>
-        <CarInfo>2021 | 5만km | 서울/경기/인천</CarInfo>
+        <CarInfo>{`${carInfos.year} | ${
+          carInfos.drivingDistance
+        }만 | ${carInfos.regionGroups.map((region) => region)}`}</CarInfo>
       </CarInfoContainer>
     </CarInfoCardLayout>
   );

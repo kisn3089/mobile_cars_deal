@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const CardListContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+`;
+
 export const CarInfoCardLayout = styled.article`
   width: 100%;
   height: 280px;
@@ -10,6 +16,7 @@ export const CarInfoCardLayout = styled.article`
   padding: 20px 12px;
   border: ${({ theme }) => `1px solid ${theme.palette.primary.black}`};
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const CarInfoContainer = styled.section`

@@ -1,7 +1,9 @@
 import { GetCarList } from "@/api/GetCarList";
 import CarInfoCard from "@/components/molecule/carInfoCard/CarInfoCard";
+import { CardListContainer } from "@/components/molecule/carInfoCard/CarInfoCard.style";
 import Header from "@/components/organism/carList/header/Header";
-import { useEffect, useState } from "react";
+import { CarInfoType } from "@/types/CarInfo.type";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Tp = styled.div`
@@ -15,13 +17,17 @@ const CarListPage = () => {
   const [page, setPage] = useState(1);
   const { data: carList, isSuccess } = GetCarList(page);
   if (isSuccess) console.log(carList);
-
   return (
     <div onClick={() => setPage((prev) => prev + 1)}>
       <Header />
       {/* 특가 차량 */}
       <Tp />
-      <CarInfoCard />
+      <CardListContainer>
+        {carList &&
+          carList.map((carItem: CarInfoType) => (
+            <CarInfoCard key={carItem.carClassId} carInfoList={carItem} />
+          ))}
+      </CardListContainer>
     </div>
   );
 };
