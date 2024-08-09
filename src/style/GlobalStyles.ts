@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -13,7 +13,19 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         width: 100vw;
-        min-height: 100v;
-        
+        min-height: 100vh;
     }
+`;
+
+export const RootCenter = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Layout = styled.div`
+  width: 420px;
+  border: ${({ theme }) => `1px solid ${theme.palette.gray.gray100}`};
+  border-radius: 10px;
+  min-height: 100vh;
 `;
