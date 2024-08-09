@@ -15,6 +15,8 @@ export const GlobalStyles = createGlobalStyle`
         width: 100vw;
         min-height: 100vh;
     }
+
+    
 `;
 
 export const RootCenter = styled.main`
@@ -28,4 +30,5 @@ export const Layout = styled.div`
   border: ${({ theme }) => `1px solid ${theme.palette.gray.gray100}`};
   border-radius: 10px;
   min-height: 100vh;
+  padding: 0 20px;
 `;

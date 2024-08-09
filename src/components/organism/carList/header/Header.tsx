@@ -1,5 +1,11 @@
+import { HeaderLayout, HeaderTitle } from "./Header.style";
+
 const Header = () => {
-  return <div>Header</div>;
+  return (
+    <HeaderLayout>
+      <HeaderTitle>차량 리스트</HeaderTitle>
+    </HeaderLayout>
+  );
 };
 
 export default Header;
