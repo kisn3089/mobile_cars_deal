@@ -36,7 +36,7 @@ const palette = {
 };
 
 const transTime = {
-  short: "0.4s",
+  short: "0.3s",
 };
 
 const transition = {

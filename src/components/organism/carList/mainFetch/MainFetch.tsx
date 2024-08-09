@@ -4,6 +4,7 @@ import Footer from "../footer/Footer";
 import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";
 import styled from "styled-components";
+// import { dummy } from "@/util/dummy";
 
 const Tp = styled.div`
   width: 100%;
@@ -17,6 +18,7 @@ const MainFetch = () => {
   const [page, setPage] = useState(1);
   const { data: carList, isSuccess } = GetCarList(page);
   if (isSuccess) console.log(carList);
+  //   const carList = dummy;
 
   const requestMore = () => {
     setPage((prev) => prev + 1);
@@ -26,8 +28,12 @@ const MainFetch = () => {
     <div>
       {/* 특가 차량 */}
       <Tp />
-      <AllCars carList={carList} />
+      <AllCars carList={carList} page={page} />
       <Footer requestMore={requestMore} disabled={carList.length % LIMIT > 0} />
+      {/* <Footer
+        requestMore={requestMore}
+        disabled={carList.slice(0, page * LIMIT).length % LIMIT > 0}
+      /> */}
     </div>
   );
 };

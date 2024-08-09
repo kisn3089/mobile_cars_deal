@@ -19,7 +19,7 @@ type ImgProps = {
 
 const Img = ({ src, size = "large", alt, imgProps }: ImgProps) => {
   const propsWithMode = { ...imgProps, ...sizeMode[size] };
-  return <StyleImg src={src} alt={alt} {...propsWithMode} />;
+  return <StyleImg src={src} alt={alt} {...propsWithMode} draggable={false} />;
 };
 
 export default Img;

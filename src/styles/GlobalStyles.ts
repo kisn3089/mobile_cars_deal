@@ -19,10 +19,12 @@ export const GlobalStyles = createGlobalStyle`
     outline: none;
     cursor: pointer;
     border: none;
+    user-select: none;
     &:disabled {
       cursor: not-allowed;
     }
   }
+
 `;
 
 export const RootCenter = styled.main`

@@ -10,7 +10,7 @@ export const FooterLayout = styled.footer`
 
 export const RequestMore = styled.button`
   width: 100%;
-  height: 40px;
+  height: 48px;
   background-color: ${({ theme }) => theme.palette.primary.brand};
   border-radius: 6px;
   color: ${({ theme }) => theme.palette.white};
@@ -19,11 +19,14 @@ export const RequestMore = styled.button`
   transition: ${({ theme }) =>
     `${theme.transTime.short} ${theme.transition.smooth}`};
 
-  &:disabled {
-    background-color: ${({ theme }) => theme.palette.gray.gray200};
-  }
-
   &:active {
     width: 90%;
+    height: 44px;
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.gray.gray200};
+    width: 100%;
+    height: 48px;
   }
 `;

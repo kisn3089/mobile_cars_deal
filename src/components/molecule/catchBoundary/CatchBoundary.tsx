@@ -1,11 +1,17 @@
+import ErrorBoundary from "@/util/method/errorBoundary";
 import { PropsWithChildren, Suspense } from "react";
 
 type CatchBoundaryProps = {
-  fallback: React.ReactNode;
+  loading: React.ReactElement;
+  error: React.ReactElement;
 } & PropsWithChildren;
 
-const CatchBoundary = ({ children, fallback }: CatchBoundaryProps) => {
-  return <Suspense fallback={fallback}>{children}</Suspense>;
+const CatchBoundary = ({ children, loading, error }: CatchBoundaryProps) => {
+  return (
+    <ErrorBoundary fallback={error}>
+      <Suspense fallback={loading}>{children}</Suspense>
+    </ErrorBoundary>
+  );
 };
 
 export default CatchBoundary;

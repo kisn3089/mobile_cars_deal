@@ -6,7 +6,7 @@ const CarListPage = () => {
   return (
     <>
       <Header />
-      <CatchBoundary fallback={<h1>Loading....</h1>}>
+      <CatchBoundary loading={<h1>Loading....</h1>} error={<h1>Error.....</h1>}>
         <MainFetch />
       </CatchBoundary>
     </>
