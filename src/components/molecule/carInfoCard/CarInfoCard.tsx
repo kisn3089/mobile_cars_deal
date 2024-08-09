@@ -14,9 +14,12 @@ import { Car } from "@/util/method/carInfoMethod";
 
 type CarInfoCardProps = {
   carInfoList: CarInfoType;
+  hasLoading?: boolean;
 };
 
-const CarInfoCard = ({ carInfoList }: CarInfoCardProps) => {
+const CarInfoCard = ({ carInfoList, hasLoading }: CarInfoCardProps) => {
+  if (hasLoading) return <></>;
+
   const carInfos = new Car(carInfoList);
 
   return (
@@ -24,7 +27,7 @@ const CarInfoCard = ({ carInfoList }: CarInfoCardProps) => {
       <Img src={carInfos.image} alt={carInfos.carClassName} size="large" />
       <CarInfoContainer>
         <CarNameTag>
-          <CarName>{carInfos.carModel}</CarName>
+          <CarName>{carInfos.carClassName}</CarName>
           <CarTag>{carInfos.carTypeTags.map((tag) => tag)}</CarTag>
         </CarNameTag>
         <CarPrice>

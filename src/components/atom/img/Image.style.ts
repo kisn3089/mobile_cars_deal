@@ -4,15 +4,8 @@ import { ImageType } from "./Image.type";
 export const StyleImg = styled.img<ImageType>`
   ${({ theme }) => `
         object-fit: contain;
-        border: ${`1px solid ${theme.palette.primary.brand}`};
-        border-radius: 10px;  
+        border-radius: 10px;
+        background-color: ${theme.palette.gray.gray200};
+        padding: 8px;
     `}
-`;
-
-export const ImgCenter = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;

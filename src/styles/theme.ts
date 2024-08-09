@@ -4,12 +4,15 @@ import { toRem } from "../util/toRem";
 export type FontSizeType = typeof fontSize;
 export type FontWeightType = typeof fontWeight;
 export type PaletteType = typeof palette;
+export type TransitionType = typeof transition;
+export type TransTimeType = typeof transTime;
 
 const fontSize = {
   14: toRem(14),
   16: toRem(16),
   18: toRem(18),
   20: toRem(20),
+  28: toRem(28),
   32: toRem(32),
 };
 
@@ -24,16 +27,26 @@ const palette = {
     black: "#374553", // main text
   },
   gray: {
-    gray100: "#e9ebee", // image bgColor & border
-    gray200: "#646f7c", // sub text
-    gray300: "#f2f4f6", // label bgColor &
+    gray100: "#f2f4f6", // label bgColor &
+    gray200: "#e9ebee", // image bgColor & border
+    gray300: "#646f7c", // sub text
   },
   white: "#fff",
   black: "#000",
+};
+
+const transTime = {
+  short: "0.4s",
+};
+
+const transition = {
+  smooth: "cubic-bezier(0.17, 0.67, 0.58, 0.93)",
 };
 
 export const theme: DefaultTheme = {
   fontSize,
   fontWeight,
   palette,
+  transition,
+  transTime,
 };

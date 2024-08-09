@@ -1,4 +1,4 @@
-import { ImgCenter, StyleImg } from "./Image.style";
+import { StyleImg } from "./Image.style";
 import { ImageType } from "./Image.type";
 
 const sizeMode = {
@@ -19,11 +19,7 @@ type ImgProps = {
 
 const Img = ({ src, size = "large", alt, imgProps }: ImgProps) => {
   const propsWithMode = { ...imgProps, ...sizeMode[size] };
-  return (
-    // <ImgCenter>
-    <StyleImg src={src} alt={alt} {...propsWithMode} />
-    // {/* </ImgCenter> */}
-  );
+  return <StyleImg src={src} alt={alt} {...propsWithMode} />;
 };
 
 export default Img;

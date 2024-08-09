@@ -8,7 +8,7 @@ export const CarInfoCardLayout = styled.article`
   flex-direction: column;
   gap: 16px 0;
   padding: 20px 12px;
-  border: ${({ theme }) => `1px solid ${theme.palette.primary.black}`};
+  border: ${({ theme }) => `1px solid ${theme.palette.gray.gray200}`};
   border-radius: 10px;
   cursor: pointer;
 `;
@@ -33,7 +33,6 @@ export const CarTag = styled.p`
 export const CarName = styled.h1`
   font-size: ${({ theme }) => theme.fontSize[16]};
   font-weight: ${({ theme }) => theme.fontWeight[700]};
-  color: ${({ theme }) => theme.palette.primary.black};
 `;
 
 export const CarPrice = styled.p`
@@ -51,5 +50,4 @@ export const CarUnit = styled.span`
 export const CarInfo = styled.span`
   font-size: ${({ theme }) => theme.fontSize[14]};
   font-weight: ${({ theme }) => theme.fontWeight[400]};
-  color: ${({ theme }) => theme.palette.primary.black};
 `;

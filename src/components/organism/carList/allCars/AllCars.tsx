@@ -1,22 +1,18 @@
-import { GetCarList } from "@/api/GetCarList";
-import { AllCarsContainer } from "./AllCars.style";
+import { AllCarsContainer, FigureTitle } from "./AllCars.style";
 import CarInfoCard from "@/components/molecule/carInfoCard/CarInfoCard";
 import { CarInfoType } from "@/types/CarInfo.type";
 
 type AllCarsProps = {
-  page: number;
+  carList: CarInfoType[];
 };
 
-const AllCars = ({ page }: AllCarsProps) => {
-  const { data: carList, isSuccess } = GetCarList(page);
-  if (isSuccess) console.log(carList);
-
+const AllCars = ({ carList }: AllCarsProps) => {
   return (
     <AllCarsContainer>
-      {isSuccess &&
-        carList.map((carItem: CarInfoType) => (
-          <CarInfoCard key={carItem.carClassId} carInfoList={carItem} />
-        ))}
+      <FigureTitle>{"모든 차량"}</FigureTitle>
+      {carList.map((carItem: CarInfoType) => (
+        <CarInfoCard key={carItem.carClassId} carInfoList={carItem} />
+      ))}
     </AllCarsContainer>
   );
 };
