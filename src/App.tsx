@@ -8,7 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/list" replace />} />
       <Route path="/list" element={<CarListPage />} />
-      <Route path="/list:id" element={<CarDetailPage />} />
+      <Route path="/list/:id" element={<CarDetailPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
