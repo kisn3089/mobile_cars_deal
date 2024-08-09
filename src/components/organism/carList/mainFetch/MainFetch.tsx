@@ -28,7 +28,7 @@ const MainFetch = () => {
     <div>
       {/* 특가 차량 */}
       <Tp />
-      <AllCars carList={carList} page={page} />
+      <AllCars carList={carList} />
       <Footer requestMore={requestMore} disabled={carList.length % LIMIT > 0} />
       {/* <Footer
         requestMore={requestMore}

@@ -1,6 +1,5 @@
-import { CarInfoType } from "@/types/CarInfo.type";
+import { CarDetailType, CarInfoType } from "@/types/CarInfo.type";
 import {
-  CarDiscount,
   CarInfo,
   CarInfoCardLayout,
   CarInfoContainer,
@@ -12,6 +11,7 @@ import {
 } from "./CarInfoCard.style";
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
+import DiscountPrice from "../discountPrice/DiscountPrice";
 
 type CarInfoCardProps = {
   carInfoList: CarInfoType;
@@ -19,9 +19,9 @@ type CarInfoCardProps = {
 };
 
 const CarInfoCard = ({ carInfoList, hasLoading }: CarInfoCardProps) => {
-  if (hasLoading) return <></>;
+  if (hasLoading) return <LoadingCarList />;
 
-  const carInfos = new Car(carInfoList);
+  const carInfos: CarDetailType = new Car(carInfoList);
 
   return (
     <CarInfoCardLayout>
@@ -34,9 +34,7 @@ const CarInfoCard = ({ carInfoList, hasLoading }: CarInfoCardProps) => {
         <CarPrice>
           {carInfos.discount()}
           <CarUnit>원</CarUnit>
-          {carInfos.discountPercent > 0 && (
-            <CarDiscount>{`${carInfos.round()}원`}</CarDiscount>
-          )}
+          <DiscountPrice carInfos={carInfos} />
         </CarPrice>
         <CarInfo>{`${
           carInfos.year
@@ -49,3 +47,19 @@ const CarInfoCard = ({ carInfoList, hasLoading }: CarInfoCardProps) => {
 };
 
 export default CarInfoCard;
+
+const LoadingCarList = () => {
+  return (
+    <CarInfoCardLayout>
+      <Img src={""} alt={"loading"} size="large" />
+      <CarInfoContainer>
+        <CarNameTag>
+          <CarName>{"qweq"}</CarName>
+          <CarTag>{"qqqweqe"}</CarTag>
+        </CarNameTag>
+        <CarPrice>{"012312"}</CarPrice>
+        <CarInfo>{"12313132wqe"}</CarInfo>
+      </CarInfoContainer>
+    </CarInfoCardLayout>
+  );
+};

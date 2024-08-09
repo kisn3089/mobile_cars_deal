@@ -1,24 +1,51 @@
 import { AllCarsContainer, FigureTitle } from "./AllCars.style";
 import CarInfoCard from "@/components/molecule/carInfoCard/CarInfoCard";
-import { CarInfoType } from "@/types/CarInfo.type";
+import CarListLoading from "@/components/molecule/loading/carListLoading/CarListLoading";
+import { CarInfoType, defaultCarInfo } from "@/types/CarInfo.type";
 // import { LIMIT } from "@/util/contstants";
 
-type AllCarsProps = {
+// type AllCarsProps = {
+//   carList: CarInfoType[];
+//   page: number;
+// };
+
+type BaseProps = {
   carList: CarInfoType[];
-  page: number;
+  hasLoading?: false;
 };
 
-const AllCars = ({ carList, page }: AllCarsProps) => {
+type LoadingProps = {
+  hasLoading: true;
+  carList?: CarInfoType[];
+};
+
+type AllCarsProps = BaseProps | LoadingProps;
+
+const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
   return (
     <AllCarsContainer>
       <FigureTitle>{"모든 차량"}</FigureTitle>
-      {carList.map((carItem: CarInfoType) => (
-        <CarInfoCard key={carItem.carClassId} carInfoList={carItem} />
-      ))}
+      <CarListLoading
+        hasLoading={hasLoading}
+        fallback={[1, 2, 3, 4].map((_, i) => (
+          <CarInfoCard
+            key={i}
+            carInfoList={defaultCarInfo}
+            hasLoading={hasLoading}
+          />
+        ))}>
+        <>
+          {carList.map((carItem: CarInfoType) => (
+            <CarInfoCard
+              key={carItem.carClassId}
+              carInfoList={carItem}
+              hasLoading={hasLoading}
+            />
+          ))}
+        </>
+      </CarListLoading>
     </AllCarsContainer>
   );
 };
 
 export default AllCars;
-
-// {carList.slice(0, page * LIMIT).map((carItem: CarInfoType) => (

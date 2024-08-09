@@ -30,23 +30,15 @@ export const CarTag = styled.p`
   color: ${({ theme }) => theme.palette.primary.brand};
 `;
 
-export const CarName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize[16]};
-  font-weight: ${({ theme }) => theme.fontWeight[700]};
-`;
-
 export const CarPrice = styled.p`
   font-size: ${({ theme }) => theme.fontSize[18]};
   font-weight: ${({ theme }) => theme.fontWeight[700]};
   color: ${({ theme }) => theme.palette.primary.brand};
 `;
 
-export const CarDiscount = styled.span`
-  font-style: italic;
-  font-size: ${({ theme }) => theme.fontSize[14]};
-  color: ${({ theme }) => theme.palette.gray.gray300};
-  margin-left: 12px;
-  text-decoration: line-through;
+export const CarName = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize[16]};
+  font-weight: ${({ theme }) => theme.fontWeight[700]};
 `;
 
 export const CarUnit = styled.span`
