@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CarListPage from "./page/CarListPage";
+import NotFound from "./components/molecule/notFound/NotFound";
 
 const BASE_URL = "http://localhost:8080";
 
@@ -17,7 +18,9 @@ function App() {
     //   </header>
     // </div>
     <Routes>
-      <Route path="/" element={<CarListPage />} />
+      <Route path="/" element={<Navigate to="/list" replace />} />
+      <Route path="/list" element={<CarListPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

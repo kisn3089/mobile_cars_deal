@@ -8,6 +8,7 @@ export type PaletteType = typeof palette;
 const fontSize = {
   14: toRem(14),
   18: toRem(18),
+  32: toRem(32),
 };
 
 const fontWeight = {
