@@ -10,6 +10,7 @@ export type TransTimeType = typeof transTime;
 export type AnimationType = typeof animation;
 
 const fontSize = {
+  10: toRem(10),
   12: toRem(12),
   14: toRem(14),
   16: toRem(16),

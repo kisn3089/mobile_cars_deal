@@ -8,11 +8,11 @@ import {
   PriceCar,
   TagCar,
   UnitCar,
-  LabelTag,
 } from "./CardInfoCar.style";
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
 import DiscountPrice from "../discountPrice/DiscountPrice";
+import { LabelTag } from "../labelTag/LabelTag.style";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;
