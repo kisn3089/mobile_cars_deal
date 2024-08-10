@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Layout = styled.article`
-  min-width: 346px;
+  width: 346px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

@@ -8,39 +8,29 @@ export const Center = styled.section`
   overflow: hidden;
 `;
 
-// export const Layout = styled.div`
-//   width: 100%;
-// `;
-
 export const Carousel = styled.div`
-  /* overflow: hidden; */
   width: 346px;
 `;
 
-export const Wrapper = styled.div<{
+export const Wrapper = styled.div.attrs<{
   $currentIndex: number;
   $width: number;
   $leng: number;
   $transX: number;
-}>`
-  width: ${({ $leng }) => `${$leng * 100}%`};
-  /* width: ${({ $leng }) => `${($leng || 1) * 100}%`}; */
-  /* width: ${({ $leng }) => `${($leng || 1) * 100 - Math.pow($leng, 2)}%`}; */
-  transform: ${({ $currentIndex, $width, $transX, $leng }) =>
-    `translateX(${
+}>(({ $currentIndex, $leng, $transX, $width, theme }) => ({
+  style: {
+    /* 데이터 길이 * 100% */
+    width: `${$leng * 100}%`,
+    /* 현재 carousel index * 캐러셀 요소의 가로 크기 + 터치 동작 + gap 10px 준만큼 더해준다. */
+    transform: `translateX(${
       -$currentIndex * $width + $transX + (($leng - 1) * 10) / 2
-    }px)`};
-  transition: ${({ $transX }) =>
-    `transform ${$transX ? 0 : 300}ms ease-in-out 0s`};
+    }px)`,
+    /* 드래그 종료시 transX 값은 0이 된다. 즉 드래그 종료시부터 300ms 속도로 transition이 동작 */
+    transition: `transform ${$transX ? 0 : 300}ms ${theme.transition.smooth}`,
+  },
+}))`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0 10px;
-`;
-
-export const CarouselItem = styled.div<{ $currentIndex: number }>`
-  position: absolute;
-  top: 0;
-  left: ${({ $currentIndex }) => `${$currentIndex}50%`};
-  transform: translateX(-50%);
 `;
