@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { CAR_LIST, LIMIT } from "../util/contstants";
+import { CAR_LIST } from "../util/contstants";
 import { coreAxios } from "../util/coreAxios";
 import { CarInfoType } from "@/types/CarInfo.type";
 
 /* GET 모든 차량 조회 */
-export const GetCarList = (page: number | string = 1) =>
+export const GetCarList = () =>
   useSuspenseQuery({
     queryKey: [CAR_LIST],
     queryFn: () =>
@@ -15,6 +15,6 @@ export const GetCarList = (page: number | string = 1) =>
       // }),
       coreAxios.get("/carClasses"),
 
-    select: (data): CarInfoType[] => data.data.slice(0, +page * LIMIT),
-    // select: (data: any) => data.data.slice(0, +page * LIMIT),
+    select: (data): CarInfoType[] => data.data,
+    // select: (data: any) => data.data,
   });

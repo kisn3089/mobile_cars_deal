@@ -34,8 +34,6 @@ export const RootCenter = styled.main`
 
 export const Layout = styled.div`
   width: 420px;
-  border: ${({ theme }) => `1px solid ${theme.palette.gray.gray200}`};
-  border-radius: 10px;
   min-height: 100vh;
   color: ${({ theme }) => theme.palette.primary.black};
 `;

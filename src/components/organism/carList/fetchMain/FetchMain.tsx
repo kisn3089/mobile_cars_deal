@@ -3,31 +3,33 @@ import { useState } from "react";
 import Footer from "../footer/Footer";
 import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";
-import styled from "styled-components";
-
-const Tp = styled.div`
-  width: 100%;
-  height: 220px;
-  border: 1px solid #374553;
-  margin-bottom: 20px;
-  border-radius: 10px;
-`;
+import SpecialOffers from "../specialOffers/SpecialOffers";
 
 const FetchMain = () => {
   const [page, setPage] = useState(1);
-  const { data: listCar, isSuccess } = GetCarList(page);
-  if (isSuccess) console.log(listCar);
+  const { data: listCar, isSuccess } = GetCarList();
+  // if (isSuccess) console.log(listCar);
 
   const requestMore = () => {
     setPage((prev) => prev + 1);
   };
 
+  const specialFilter = listCar.filter(
+    (carItem) => carItem.carTypeTags.includes("특가")
+    // &&
+    //   carItem.carTypeTags.includes("인기")
+  );
+  const sliceList = listCar.slice(0, page * LIMIT);
+
   return (
     <div>
       {/* 특가 차량 */}
-      <Tp />
-      <AllCars carList={listCar} />
-      <Footer requestMore={requestMore} disabled={listCar.length % LIMIT > 0} />
+      <SpecialOffers listSpecial={specialFilter} />
+      {/* <AllCars carList={sliceList} />
+      <Footer
+        requestMore={requestMore}
+        disabled={sliceList.length % LIMIT > 0}
+      /> */}
     </div>
   );
 };

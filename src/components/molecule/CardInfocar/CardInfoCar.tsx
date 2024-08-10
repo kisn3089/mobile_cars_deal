@@ -1,13 +1,13 @@
 import { DetailCarType, CarInfoType } from "@/types/CarInfo.type";
 import {
-  ContentCar,
-  LayoutCardCar,
-  ContainerCardCar,
-  NameCar,
-  NameTagCar,
-  PriceCar,
-  TagCar,
-  UnitCar,
+  Content,
+  Layout,
+  Column,
+  Name,
+  NameTag,
+  Price,
+  Tag,
+  Unit,
 } from "./CardInfoCar.style";
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
@@ -22,28 +22,28 @@ const CardInfoCar = ({ listInfoCar }: CardInfoCarProps) => {
   const infosCar: DetailCarType = new Car(listInfoCar);
 
   return (
-    <LayoutCardCar>
+    <Layout>
       <Img src={infosCar.image} alt={infosCar.carClassName} size="large" />
-      <ContainerCardCar>
-        <NameTagCar>
-          <NameCar>{infosCar.carClassName}</NameCar>
-          <TagCar>
+      <Column>
+        <NameTag>
+          <Name>{infosCar.carClassName}</Name>
+          <Tag>
             {infosCar.carTypeTags.map((tag, i) => (
               <LabelTag key={i}>{tag}</LabelTag>
             ))}
-          </TagCar>
-        </NameTagCar>
-        <PriceCar>
+          </Tag>
+        </NameTag>
+        <Price>
           {infosCar.discount()}
-          <UnitCar>원</UnitCar>
+          <Unit>원</Unit>
           <DiscountPrice carInfos={infosCar} />
-        </PriceCar>
-        <ContentCar>
+        </Price>
+        <Content>
           {`${infosCar.year}년 • ${infosCar.driveFormat()} • `}
           {infosCar.regionGroups.map((region) => region)}
-        </ContentCar>
-      </ContainerCardCar>
-    </LayoutCardCar>
+        </Content>
+      </Column>
+    </Layout>
   );
 };
 
