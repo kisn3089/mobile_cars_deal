@@ -1,4 +1,4 @@
-import { GetCarList } from "@/api/GetCarList";
+import { GetCarList, GetCarListSuspense } from "@/api/GetCarList";
 import { useState } from "react";
 import Footer from "../footer/Footer";
 import { LIMIT } from "@/util/contstants";
@@ -7,7 +7,7 @@ import SpecialOffers from "../specialOffers/SpecialOffers";
 
 const FetchMain = () => {
   const [page, setPage] = useState(1);
-  const { data: listCar, isSuccess } = GetCarList();
+  const { data: listCar, isSuccess } = GetCarListSuspense();
   if (isSuccess) console.log(listCar);
 
   const requestMore = () => {
@@ -15,20 +15,23 @@ const FetchMain = () => {
   };
 
   // const specialFilter = dummy.filter(
-  const specialFilter = listCar.filter(
-    (carItem) => carItem.carTypeTags.includes("특가")
-    // &&
-    //   carItem.carTypeTags.includes("인기")
-  );
-  const sliceList = listCar.slice(0, page * LIMIT);
+  const specialFilter =
+    listCar?.filter(
+      (carItem: any) => carItem.carTypeTags.includes("특가")
+      // &&
+      //   carItem.carTypeTags.includes("인기")
+    ) || [];
+  // const sliceList = [""];
+  const sliceList = listCar?.slice(0, page * LIMIT) || [];
+  console.log(page);
 
   return (
     <>
       <SpecialOffers listSpecial={specialFilter} />
-      <AllCars carList={sliceList} />
+      <AllCars carList={[]} />
       <Footer
         requestMore={requestMore}
-        disabled={sliceList.length % LIMIT > 0}
+        disabled={!sliceList[0] || sliceList.length % LIMIT > 0}
       />
     </>
   );
