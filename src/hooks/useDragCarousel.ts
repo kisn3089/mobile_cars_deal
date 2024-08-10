@@ -1,4 +1,4 @@
-import { dragEvent, inRange } from "@/util/dragEvent";
+import { dragEvent, inRange, touchEvent } from "@/util/dragEvent";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type useDragCarouselProps = {
@@ -33,10 +33,10 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
     const maxIndex = dataSize - 1;
 
     /* moveX = 드래그 시작점부터 종료까지 움직인 x값 ( transX와 같다 ) */
-    /* 드래그 범위가 캐러셀 요소의 크기의 절반을 넘기면 */
-    if (moveX < -widthTargetDarg / 2)
+    /* 드래그 범위가 캐러셀 요소의 크기의 3 / 1을 넘기면 */
+    if (moveX < -widthTargetDarg / 3)
       setIndexCurrent(inRange(indexCurrent + 1, 0, maxIndex));
-    if (moveX > widthTargetDarg / 2)
+    if (moveX > widthTargetDarg / 3)
       setIndexCurrent(inRange(indexCurrent - 1, 0, maxIndex));
 
     setMoveX(0);
@@ -48,5 +48,6 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
     moveX,
     widthTargetDarg,
     dragEvent: dragEvent({ onDragChange, onDragEnd }),
+    touchEvent: touchEvent({ onDragChange, onDragEnd }),
   };
 };

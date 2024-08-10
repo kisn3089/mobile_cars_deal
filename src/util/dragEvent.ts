@@ -17,20 +17,45 @@ export const dragEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
   const onMouseDown = (clickEvent: React.MouseEvent<HTMLDivElement>) => {
     clickEvent.stopPropagation();
 
-    const mouseMoveHandler = (moveEvent: MouseEvent) => {
+    const mouseMove = (moveEvent: MouseEvent) => {
       const deltaX = moveEvent.pageX - clickEvent.pageX;
       onDragChange(deltaX);
     };
 
-    const mouseUpHandler = (moveEvent: MouseEvent) => {
+    const mouseUp = (moveEvent: MouseEvent) => {
       const deltaX = moveEvent.pageX - clickEvent.pageX;
       onDragEnd(deltaX);
-      document.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mousemove", mouseMove);
     };
 
-    document.addEventListener("mousemove", mouseMoveHandler);
-    document.addEventListener("mouseup", mouseUpHandler, { once: true });
+    document.addEventListener("mousemove", mouseMove);
+    document.addEventListener("mouseup", mouseUp, { once: true });
   };
 
   return onMouseDown;
+};
+
+export const touchEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
+  /* MouseDown 이후부터 MouseMove & MouseUp Event 동작한다 */
+  const onTouchStart = (touchStart: React.TouchEvent<HTMLDivElement>) => {
+    touchStart.stopPropagation();
+
+    const touchMove = (touchEvent: TouchEvent) => {
+      const deltaX =
+        touchEvent.changedTouches[0].pageX - touchStart.changedTouches[0].pageX;
+      onDragChange(deltaX);
+    };
+
+    const touchEnd = (touchEvent: TouchEvent) => {
+      const deltaX =
+        touchEvent.changedTouches[0].pageX - touchStart.changedTouches[0].pageX;
+      onDragEnd(deltaX);
+      document.removeEventListener("touchmove", touchMove);
+    };
+
+    document.addEventListener("touchmove", touchMove);
+    document.addEventListener("touchend", touchEnd, { once: true });
+  };
+
+  return onTouchStart;
 };

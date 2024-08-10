@@ -8,8 +8,14 @@ type CarouselProps = {
 } & PropsWithChildren;
 
 const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
-  const { refCarousel, indexCurrent, moveX, widthTargetDarg, dragEvent } =
-    useDragCarousel({ dataSize: dataSize, gap: gap });
+  const {
+    refCarousel,
+    indexCurrent,
+    moveX,
+    widthTargetDarg,
+    dragEvent,
+    touchEvent,
+  } = useDragCarousel({ dataSize: dataSize, gap: gap });
 
   return (
     <Layout ref={refCarousel}>
@@ -19,7 +25,8 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
         $moveX={moveX}
         $dataSize={dataSize}
         $gap={gap}
-        onMouseDown={dragEvent}>
+        // onMouseDown={dragEvent}
+        onTouchStart={touchEvent}>
         {children}
       </DragSpace>
     </Layout>
