@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
       width: 100vw;
       min-height: 100vh;
+      background-color: ${({ theme }) => theme.palette.gray.gray400};
   }
 
   button {
@@ -36,4 +37,5 @@ export const Layout = styled.div`
   width: 420px;
   min-height: 100vh;
   color: ${({ theme }) => theme.palette.primary.black};
+  background-color: ${({ theme }) => theme.palette.gray.gray100};
 `;

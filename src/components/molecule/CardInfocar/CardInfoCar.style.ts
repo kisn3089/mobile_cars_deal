@@ -8,8 +8,8 @@ export const Layout = styled.article<{ $isSmall: boolean }>`
   flex-direction: column;
   gap: 18px 0;
   padding: 20px 12px;
-  border: ${({ theme }) => `1px solid ${theme.palette.gray.gray200}`};
-  border-radius: 10px;
+  background-color: ${({ theme }) => theme.palette.white};
+  border-radius: 12px;
   cursor: pointer;
   user-select: none;
 `;

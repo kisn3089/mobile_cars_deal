@@ -17,8 +17,8 @@ const fontSize = {
   16: toRem(16),
   18: toRem(18),
   20: toRem(20),
-  28: toRem(28),
-  32: toRem(32),
+  22: toRem(22),
+  24: toRem(24),
 };
 
 const fontWeight = {
@@ -41,6 +41,7 @@ const palette = {
     gray100: "#f2f4f6", // label bgColor &
     gray200: "#e9ebee", // image bgColor & border
     gray300: "#646f7c", // sub text
+    gray400: "#edeff1", // out bgColor
   },
   white: "#fff",
   black: "#000",
