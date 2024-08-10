@@ -15,9 +15,9 @@ const FetchMain = () => {
   };
 
   const specialFilter = listCar.filter(
-    (carItem) => carItem.carTypeTags.includes("특가")
-    //  &&
-    //   carItem.carTypeTags.includes("인기")
+    (carItem) =>
+      carItem.carTypeTags.includes("특가") &&
+      carItem.carTypeTags.includes("인기")
   );
   const sliceList = listCar.slice(0, page * LIMIT);
 

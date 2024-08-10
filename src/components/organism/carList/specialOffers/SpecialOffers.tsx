@@ -13,7 +13,7 @@ const SpecialOffers = ({ listSpecial }: SpecialOffersProps) => {
     <>
       <TitleSection>특가 차량</TitleSection>
       <Center>
-        <Carousel carouselDataSize={listSpecial.length} gap={10}>
+        <Carousel dataSize={listSpecial.length} gap={10}>
           {listSpecial.map((item, i) => (
             <CardInfoCar key={i} listInfoCar={item} />
           ))}

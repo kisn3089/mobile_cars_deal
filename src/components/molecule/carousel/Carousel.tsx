@@ -1,23 +1,23 @@
 import { PropsWithChildren } from "react";
 import { DragSpace, Layout } from "./Carousel.style";
-import { useDragCarousel } from "@/hooks/useDragEvent";
+import { useDragCarousel } from "@/hooks/useDragCarousel";
 
 type CarouselProps = {
   gap: number;
-  carouselDataSize: number;
+  dataSize: number;
 } & PropsWithChildren;
 
-const Carousel = ({ children, carouselDataSize, gap }: CarouselProps) => {
-  const { carouselRef, currentIndex, transX, carouselSize, dragEvent } =
-    useDragCarousel({ carouselDataSize: carouselDataSize, gap: gap });
+const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
+  const { refCarousel, indexCurrent, moveX, widthTargetDarg, dragEvent } =
+    useDragCarousel({ dataSize: dataSize, gap: gap });
 
   return (
-    <Layout ref={carouselRef}>
+    <Layout ref={refCarousel}>
       <DragSpace
-        $carouselSize={carouselSize}
-        $currentIndex={currentIndex}
-        $transX={transX}
-        $carouselDataSize={carouselDataSize}
+        $widthTargetDarg={widthTargetDarg}
+        $indexCurrent={indexCurrent}
+        $moveX={moveX}
+        $dataSize={dataSize}
         $gap={gap}
         onMouseDown={dragEvent}>
         {children}
