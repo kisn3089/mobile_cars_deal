@@ -13,7 +13,7 @@ export const inRange = (target: number, min: number, max: number) => {
 
 /* Drag 시작점부터 종료까지의 x값을 callback 으로 값 전달 */
 export const dragEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
-  /* MouseDown 이후부터 MouseMove & MouseUp Event 동작한다 */
+  /* MouseDown 이후부터 MouseMove & MouseUp Event 동작 */
   const onMouseDown = (clickEvent: React.MouseEvent<HTMLDivElement>) => {
     clickEvent.stopPropagation();
 
@@ -36,7 +36,7 @@ export const dragEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
 };
 
 export const touchEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
-  /* MouseDown 이후부터 MouseMove & MouseUp Event 동작한다 */
+  /* TouchStart 이후부터 TouchMove & TouchEnd Event 동작 */
   const onTouchStart = (touchStart: React.TouchEvent<HTMLDivElement>) => {
     touchStart.stopPropagation();
 

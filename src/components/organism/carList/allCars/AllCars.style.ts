@@ -4,6 +4,7 @@ export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => `0 ${theme.padding.layout}`};
+  gap: 16px 0;
 `;
 
 export const TitleSection = styled.h3`

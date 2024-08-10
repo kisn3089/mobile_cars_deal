@@ -13,9 +13,9 @@ const SpecialOffers = ({ listSpecial }: SpecialOffersProps) => {
     <>
       <TitleSection>특가 차량</TitleSection>
       <Center>
-        <Carousel dataSize={listSpecial.length} gap={10}>
+        <Carousel dataSize={listSpecial.length} gap={16}>
           {listSpecial.map((item, i) => (
-            <CardInfoCar key={i} listInfoCar={item} />
+            <CardInfoCar key={i} listInfoCar={item} size="small" />
           ))}
         </Carousel>
       </Center>

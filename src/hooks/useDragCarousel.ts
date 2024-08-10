@@ -14,9 +14,10 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
 
   useEffect(() => {
     if (!refCarousel.current) return;
-    const rectCarousel = refCarousel.current.getBoundingClientRect();
+    const rectCarousel =
+      refCarousel.current.children[0].children[0].getBoundingClientRect().width;
 
-    setWidthTargetDrag(rectCarousel.width + gap);
+    setWidthTargetDrag(rectCarousel + gap);
   }, [refCarousel]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */

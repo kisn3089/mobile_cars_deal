@@ -17,14 +17,15 @@ import {
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;
+  size?: "large" | "small";
 };
 
-const CardInfoCar = ({ listInfoCar }: CardInfoCarProps) => {
+const CardInfoCar = ({ listInfoCar, size = "large" }: CardInfoCarProps) => {
   const infosCar: DetailCarType = new Car(listInfoCar);
 
   return (
-    <Layout>
-      <Img src={infosCar.image} alt={infosCar.carClassName} size="large" />
+    <Layout $isSmall={size === "small"}>
+      <Img src={infosCar.image} alt={infosCar.carClassName} size={size} />
       <Column>
         <NameTag>
           <Name>{infosCar.carClassName}</Name>
@@ -41,7 +42,7 @@ const CardInfoCar = ({ listInfoCar }: CardInfoCarProps) => {
         </Price>
         <Content>
           {`${infosCar.year}년 • ${infosCar.driveFormat()} • `}
-          {infosCar.regionGroups.map((region) => region)}
+          {infosCar.regionGroups.join("/")}
         </Content>
       </Column>
     </Layout>

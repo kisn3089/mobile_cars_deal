@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Layout = styled.div`
-  width: 346px;
+export const Layout = styled.div<{ $width: number }>`
+  width: ${({ $width }) => `${$width}px`};
 `;
 
 export const DragSpace = styled.div.attrs<{

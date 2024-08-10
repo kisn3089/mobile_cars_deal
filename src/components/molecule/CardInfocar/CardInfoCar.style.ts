@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const Layout = styled.article`
-  width: 346px;
+export const Layout = styled.article<{ $isSmall: boolean }>`
+  max-width: ${({ $isSmall }) => $isSmall && "260px"};
+  max-height: ${({ $isSmall }) => $isSmall && "255px"};
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -47,10 +48,10 @@ export const Unit = styled.span`
   color: ${({ theme }) => theme.palette.primary.brand};
 `;
 
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+export const Content = styled.p`
   font-size: ${({ theme }) => theme.fontSize[12]};
   font-weight: ${({ theme }) => theme.fontWeight[400]};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
