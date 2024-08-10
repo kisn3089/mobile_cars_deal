@@ -8,6 +8,7 @@ import {
   PriceCar,
   TagCar,
   UnitCar,
+  LabelTag,
 } from "./CardInfoCar.style";
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
@@ -26,18 +27,25 @@ const CardInfoCar = ({ listInfoCar }: CardInfoCarProps) => {
       <ContainerCardCar>
         <NameTagCar>
           <NameCar>{infosCar.carClassName}</NameCar>
-          <TagCar>{infosCar.carTypeTags.map((tag) => tag)}</TagCar>
+          <TagCar>
+            {infosCar.carTypeTags.map((tag, i) => (
+              <LabelTag key={i}>{tag}</LabelTag>
+            ))}
+          </TagCar>
         </NameTagCar>
         <PriceCar>
           {infosCar.discount()}
           <UnitCar>원</UnitCar>
           <DiscountPrice carInfos={infosCar} />
         </PriceCar>
-        <ContentCar>{`${
-          infosCar.year
-        } | ${infosCar.driveFormat()} | ${infosCar.regionGroups.map(
-          (region) => region
-        )}`}</ContentCar>
+        <ContentCar>
+          {`${infosCar.year} | ${infosCar.driveFormat()} | `}
+          <>
+            {infosCar.regionGroups.map((region, i) => (
+              <LabelTag key={i}>{region}</LabelTag>
+            ))}
+          </>
+        </ContentCar>
       </ContainerCardCar>
     </LayoutCardCar>
   );

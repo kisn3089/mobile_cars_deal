@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "@/components/molecule/notFound/NotFound";
 import ListCarPage from "./pages/ListCarPage";
 import DetailCarPage from "./pages/DetailCarPage";
+import "@/styles/font.css";
 
 function App() {
   return (

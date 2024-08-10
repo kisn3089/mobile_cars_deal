@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  src: local("SpoqaHanSansNeo-Bold.woff2"),
+    url("/fonts/SpoqaHanSansNeo-Bold.woff2"), format("font-woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  src: local("SpoqaHanSansNeo-Medium.woff2"),
+    url("/fonts/SpoqaHanSansNeo-Medium.woff2"), format("font-woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+* {
+  font-family: "SpoqaHanSansNeo";
+}

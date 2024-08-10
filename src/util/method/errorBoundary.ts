@@ -29,11 +29,11 @@ class ErrorBoundary extends React.Component<
     super(props);
     this.state = { hasError: false };
   }
-
+  /* Error 발생시 hasError 상태 변경 */
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-
+  /* Error 감지시 이벤트 */
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     console.error("Error caught by componentDidCatch:", error, errorInfo);
   }
