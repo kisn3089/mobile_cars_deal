@@ -14,10 +14,10 @@ const Tp = styled.div`
   border-radius: 10px;
 `;
 
-const MainFetch = () => {
+const FetchMain = () => {
   const [page, setPage] = useState(1);
-  const { data: carList, isSuccess } = GetCarList(page);
-  if (isSuccess) console.log(carList);
+  const { data: listCar, isSuccess } = GetCarList(page);
+  if (isSuccess) console.log(listCar);
   //   const carList = dummy;
 
   const requestMore = () => {
@@ -28,8 +28,8 @@ const MainFetch = () => {
     <div>
       {/* 특가 차량 */}
       <Tp />
-      <AllCars carList={carList} />
-      <Footer requestMore={requestMore} disabled={carList.length % LIMIT > 0} />
+      <AllCars carList={listCar} />
+      <Footer requestMore={requestMore} disabled={listCar.length % LIMIT > 0} />
       {/* <Footer
         requestMore={requestMore}
         disabled={carList.slice(0, page * LIMIT).length % LIMIT > 0}
@@ -38,4 +38,4 @@ const MainFetch = () => {
   );
 };
 
-export default MainFetch;
+export default FetchMain;

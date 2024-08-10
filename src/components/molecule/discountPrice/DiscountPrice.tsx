@@ -1,8 +1,8 @@
-import { CarDetailType } from "@/types/CarInfo.type";
+import { DetailCarType } from "@/types/CarInfo.type";
 import { CarDiscount, DiscountPercent } from "./DiscountPrice.style";
 
 type DiscountPriceProps = {
-  carInfos: CarDetailType;
+  carInfos: DetailCarType;
 };
 
 const DiscountPrice = ({ carInfos }: DiscountPriceProps) => {

@@ -1,5 +1,3 @@
-/* 솔직히 복사 붙여넣기 했어요... */
-
 import React from "react";
 /**
  * ErrorBoundary 컴포넌트의 프로퍼티를 정의합니다.
