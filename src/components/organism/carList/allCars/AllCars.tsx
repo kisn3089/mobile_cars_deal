@@ -1,4 +1,4 @@
-import CardInfoCar from "@/components/molecule/CardInfocar/CardInfoCar";
+import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 import { Layout, TitleSection } from "./AllCars.style";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import { CarInfoType } from "@/types/CarInfo.type";

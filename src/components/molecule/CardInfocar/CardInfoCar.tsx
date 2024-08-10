@@ -1,18 +1,19 @@
 import { DetailCarType, CarInfoType } from "@/types/CarInfo.type";
+
+import Img from "@/components/atom/img/Image";
+import { Car } from "@/util/method/carInfoMethod";
+import DiscountPrice from "../discountPrice/DiscountPrice";
+import { LabelTag } from "../labelTag/LabelTag.style";
 import {
+  Column,
   Content,
   Layout,
-  Column,
   Name,
   NameTag,
   Price,
   Tag,
   Unit,
 } from "./CardInfoCar.style";
-import Img from "@/components/atom/img/Image";
-import { Car } from "@/util/method/carInfoMethod";
-import DiscountPrice from "../discountPrice/DiscountPrice";
-import { LabelTag } from "../labelTag/LabelTag.style";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;

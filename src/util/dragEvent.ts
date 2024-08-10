@@ -14,7 +14,7 @@ export const inRange = (target: number, min: number, max: number) => {
 /* Drag 시작점부터 종료까지의 x값을 callback 으로 값 전달 */
 export const dragEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
   /* MouseDown 이후부터 MouseMove & MouseUp Event 동작한다 */
-  const onMouseDown = (clickEvent: React.MouseEvent<Element, MouseEvent>) => {
+  const onMouseDown = (clickEvent: React.MouseEvent<HTMLDivElement>) => {
     clickEvent.stopPropagation();
 
     const mouseMoveHandler = (moveEvent: MouseEvent) => {

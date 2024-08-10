@@ -1,7 +1,15 @@
 import { dragEvent, inRange } from "@/util/dragEvent";
 import { useEffect, useRef, useState } from "react";
 
-export const useDragCarousel = (carouselDataSize: number) => {
+type useDragCarouselProps = {
+  carouselDataSize: number;
+  gap: number;
+};
+
+export const useDragCarousel = ({
+  carouselDataSize,
+  gap,
+}: useDragCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transX, setTransX] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -11,7 +19,7 @@ export const useDragCarousel = (carouselDataSize: number) => {
     if (!carouselRef.current) return;
     const carouselRect = carouselRef.current.getBoundingClientRect();
 
-    setCarouselSize(carouselRect.width + 10);
+    setCarouselSize(carouselRect.width + gap);
   }, [carouselRef]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
