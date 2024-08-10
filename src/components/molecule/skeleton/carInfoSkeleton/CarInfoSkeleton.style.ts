@@ -8,7 +8,7 @@ export const GapSkeleton = styled.div`
 
 export const CardCarLayoutSkeleton = styled.article`
   width: 100%;
-  height: 280px;
+  height: 300px;
   display: flex;
   justify-content: start;
   flex-direction: column;

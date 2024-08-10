@@ -5,7 +5,7 @@ export const CarDiscount = styled.span`
   font-size: ${({ theme }) => theme.fontSize[12]};
   font-weight: ${({ theme }) => theme.fontWeight[500]};
   color: ${({ theme }) => theme.palette.gray.gray300};
-  margin: 0 8px 0 12px;
+  margin: 0 6px 0 6px;
   text-decoration: line-through;
 `;
 

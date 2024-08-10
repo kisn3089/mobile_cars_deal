@@ -39,12 +39,8 @@ const CardInfoCar = ({ listInfoCar }: CardInfoCarProps) => {
           <DiscountPrice carInfos={infosCar} />
         </PriceCar>
         <ContentCar>
-          {`${infosCar.year} | ${infosCar.driveFormat()} | `}
-          <>
-            {infosCar.regionGroups.map((region, i) => (
-              <LabelTag key={i}>{region}</LabelTag>
-            ))}
-          </>
+          {`${infosCar.year}년 • ${infosCar.driveFormat()} • `}
+          {infosCar.regionGroups.map((region) => region)}
         </ContentCar>
       </ContainerCardCar>
     </LayoutCardCar>

@@ -15,7 +15,7 @@ type InfoCarSkeletonProps = {
 
 const CarInfoSkeleton = ({ count = 1 }: InfoCarSkeletonProps) => {
   return (
-    <GapSkeleton>
+    <GapSkeleton className="skeleton">
       {Array.from({ length: count }, (_, i) => i).map((_, i) => (
         <CardCarLayoutSkeleton key={i}>
           <DeadSpaceSkeleton className="space" />

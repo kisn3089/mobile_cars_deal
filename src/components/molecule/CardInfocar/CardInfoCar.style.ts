@@ -49,7 +49,7 @@ export const UnitCar = styled.span`
 export const ContentCar = styled.div`
   display: flex;
   align-items: center;
-  gap: 0 2px;
-  font-size: ${({ theme }) => theme.fontSize[14]};
+  justify-content: space-between;
+  font-size: ${({ theme }) => theme.fontSize[12]};
   font-weight: ${({ theme }) => theme.fontWeight[400]};
 `;

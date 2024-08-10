@@ -8,6 +8,7 @@ export type PaletteType = typeof palette;
 export type TransitionType = typeof transition;
 export type TransTimeType = typeof transTime;
 export type AnimationType = typeof animation;
+export type PaddingType = typeof padding;
 
 const fontSize = {
   10: toRem(10),
@@ -26,9 +27,14 @@ const fontWeight = {
   700: 700,
 };
 
+const padding = {
+  layout: "20px",
+};
+
 const palette = {
   primary: {
     brand: "#0279ff", // price
+    brand100: "#e4edfb", // label bgColor
     black: "#374553", // main text
   },
   gray: {
@@ -60,4 +66,5 @@ export const theme: DefaultTheme = {
   transition,
   transTime,
   animation,
+  padding,
 };

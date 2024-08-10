@@ -1,5 +1,5 @@
 import CardInfoCar from "@/components/molecule/CardInfocar/CardInfoCar";
-import { ContainerAllCars, TitleFigure } from "./AllCars.style";
+import { ContainerAllCars, TitleAllCars } from "./AllCars.style";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import { CarInfoType } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
@@ -19,7 +19,7 @@ type AllCarsProps = BaseProps | LoadingProps;
 const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
   return (
     <ContainerAllCars>
-      <TitleFigure>{"모든 차량"}</TitleFigure>
+      <TitleAllCars>{"모든 차량"}</TitleAllCars>
       <Skeleton
         hasLoading={hasLoading}
         fallback={<CarInfoSkeleton count={4} />}>

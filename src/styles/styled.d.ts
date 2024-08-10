@@ -6,6 +6,7 @@ import {
   TransitionType,
   TransTimeType,
   AnimationType,
+  PaddingType,
 } from "./theme";
 
 declare module "styled-components" {
@@ -16,5 +17,6 @@ declare module "styled-components" {
     transition: TransitionType;
     transTime: TransTimeType;
     animation: AnimationType;
+    padding: PaddingType;
   }
 }
