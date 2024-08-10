@@ -1,5 +1,5 @@
 import { dragEvent, inRange } from "@/util/dragEvent";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type useDragCarouselProps = {
   carouselDataSize: number;
@@ -23,9 +23,12 @@ export const useDragCarousel = ({
   }, [carouselRef]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
-  const onDragChange = (moveX: number) => {
-    setTransX(inRange(moveX, -carouselSize, carouselSize));
-  };
+  const onDragChange = useMemo(
+    () => (moveX: number) => {
+      setTransX(inRange(moveX, -carouselSize, carouselSize));
+    },
+    [carouselSize]
+  );
 
   /* DragEnd Event  */
   const onDragEnd = (moveX: number) => {

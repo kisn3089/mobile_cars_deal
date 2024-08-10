@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { DragSpace, Layout } from "./Carousel.style";
 import { useDragCarousel } from "@/hooks/useDragEvent";
 
@@ -9,7 +9,8 @@ type CarouselProps = {
 
 const Carousel = ({ children, carouselDataSize, gap }: CarouselProps) => {
   const { carouselRef, currentIndex, transX, carouselSize, dragEvent } =
-    useDragCarousel({ carouselDataSize: carouselDataSize, gap: 10 });
+    useDragCarousel({ carouselDataSize: carouselDataSize, gap: gap });
+
   return (
     <Layout ref={carouselRef}>
       <DragSpace
@@ -25,4 +26,4 @@ const Carousel = ({ children, carouselDataSize, gap }: CarouselProps) => {
   );
 };
 
-export default React.memo(Carousel);
+export default Carousel;
