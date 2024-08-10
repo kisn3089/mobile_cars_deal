@@ -12,6 +12,12 @@ export const Layout = styled.article<{ $isSmall: boolean }>`
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
+  transition: ${({ theme }) => theme.transTime.short};
+
+  &:hover {
+    box-shadow: ${({ theme }) =>
+      `0px 0px 10px 5px ${theme.palette.gray.gray200}`};
+  }
 `;
 
 export const Column = styled.section`

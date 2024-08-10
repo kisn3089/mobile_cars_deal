@@ -3,5 +3,5 @@ import { ImageType } from "./Image.type";
 
 export const StyleImg = styled.img<ImageType>`
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 12px;
 `;

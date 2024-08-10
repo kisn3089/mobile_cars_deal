@@ -35,6 +35,8 @@ const palette = {
   primary: {
     brand: "#0279ff", // price
     brand100: "#e4edfb", // label bgColor
+    brand200: "#00b8ff", // label bgColor
+    brand300: "#28323c", // label bgColor
     black: "#374553", // main text
   },
   gray: {
