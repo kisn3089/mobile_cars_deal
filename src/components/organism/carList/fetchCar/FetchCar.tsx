@@ -1,5 +1,4 @@
 import { GetCarListSuspense } from "@/api/GetCarList";
-import { useEffect, useState } from "react";
 import Footer from "../footer/Footer";
 import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";

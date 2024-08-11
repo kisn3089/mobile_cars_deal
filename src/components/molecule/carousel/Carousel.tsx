@@ -7,6 +7,7 @@ type CarouselProps = {
   dataSize: number;
 } & PropsWithChildren;
 
+/* Require: TouchEvent Click */
 const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
   const {
     refCarousel,
