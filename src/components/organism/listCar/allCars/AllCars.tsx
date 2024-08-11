@@ -4,6 +4,7 @@ import { CarInfoType } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 import Modal from "@/components/core/modal/Modal";
+import DetailViewCar from "../../../molecule/detailViewCar/DetailViewCar";
 
 type BaseProps = {
   carList: CarInfoType[];
@@ -39,7 +40,7 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
         </Skeleton>
       </Column>
       <Modal>
-        <div></div>
+        <DetailViewCar></DetailViewCar>
       </Modal>
     </>
   );

@@ -4,10 +4,10 @@ import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";
 import SpecialOffers from "../specialOffers/SpecialOffers";
 import Check from "@/components/molecule/check/Check";
-import { useFetchListCar } from "@/hooks/useFetchListCar";
+import { useScrollList } from "@/hooks/useScrollList";
 
 const FetchMain = () => {
-  const { page, requestMore, clickCardCar } = useFetchListCar();
+  const { page, requestMore, clickCardCar } = useScrollList();
   const { data: getListCar } = GetCarListSuspense();
   // const getListCar: any[] = [];
 

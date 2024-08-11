@@ -1,23 +1,26 @@
 import { StyleImg } from "./Image.style";
-import { ImageType } from "./Image.type";
+import { ImageType, ImgSizeType } from "./Image.type";
 
 const sizeMode = {
   small: {
     height: "120px",
   },
-  large: {
+  medium: {
     height: "160px",
+  },
+  large: {
+    height: "220px",
   },
 } as const;
 
 type ImgProps = {
   src: string;
   alt: string;
-  size: "small" | "large";
+  size: ImgSizeType;
   imgProps?: ImageType;
 };
 
-const Img = ({ src, size = "large", alt, imgProps }: ImgProps) => {
+const Img = ({ src, size = "medium", alt, imgProps }: ImgProps) => {
   const propsWithMode = { ...imgProps, ...sizeMode[size] };
   return <StyleImg src={src} alt={alt} {...propsWithMode} draggable={false} />;
 };

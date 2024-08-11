@@ -1,7 +1,7 @@
 import { LIMIT } from "@/util/contstants";
 import { useEffect, useState } from "react";
 
-export const useFetchListCar = () => {
+export const useScrollList = () => {
   const [selectId, setSelectId] = useState<number>();
   const [page, setPage] = useState<number>(1);
 

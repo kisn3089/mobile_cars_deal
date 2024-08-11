@@ -1,10 +1,10 @@
-import Header from "@/components/organism/carList/header/Header";
+import Header from "@/components/organism/listCar/header/Header";
 import CatchBoundary from "@/components/core/catchBoundary/CatchBoundary";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
-import { Flex } from "@/components/organism/carList/header/Header.style";
+import { Flex } from "@/components/organism/listCar/header/Header.style";
 import Check from "@/components/molecule/check/Check";
-import FetchCar from "@/components/organism/carList/fetchCar/FetchCar";
+import FetchCar from "@/components/organism/listCar/fetchCar/FetchCar";
 
 const ListCarPage = () => {
   return (

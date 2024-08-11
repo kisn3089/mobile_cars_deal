@@ -14,17 +14,17 @@ import {
   Tag,
   Unit,
 } from "./CardInfoCar.style";
+import { ImgSizeType } from "@/components/atom/img/Image.type";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;
-  size?: "large" | "small";
+  size?: ImgSizeType;
   clickCardCar: (id: number) => void;
-  // click: (ref: HTMLDivElement | null) => void;
 };
 
 const CardInfoCar = ({
   listInfoCar,
-  size = "large",
+  size = "medium",
   clickCardCar,
 }: CardInfoCarProps) => {
   const infosCar: DetailCarType = new Car(listInfoCar);

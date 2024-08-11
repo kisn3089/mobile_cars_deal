@@ -14,6 +14,9 @@ export const Center = styled.div`
 
 export const Dim = styled.div`
   width: ${({ theme }) => theme.width.maxWidth};
-  height: 400px;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
