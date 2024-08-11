@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useRef } from "react";
+import { PropsWithChildren } from "react";
 import { DragSpace, Layout } from "./Carousel.style";
 import { useDragCarousel } from "@/hooks/useDragCarousel";
 
@@ -16,14 +16,6 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
     dragEvent,
     touchEvent,
   } = useDragCarousel({ dataSize: dataSize, gap: gap });
-  const childRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (childRef.current) {
-      const width = childRef.current.getBoundingClientRect().width;
-      console.log(width);
-    }
-  }, [childRef]);
 
   return (
     <Layout ref={refCarousel} $width={widthTargetDarg - gap}>

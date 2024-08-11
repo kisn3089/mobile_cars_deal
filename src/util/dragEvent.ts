@@ -18,18 +18,30 @@ export const dragEvent = ({ onDragChange, onDragEnd }: DragEventProps) => {
     clickEvent.stopPropagation();
 
     const mouseMove = (moveEvent: MouseEvent) => {
+      const stopCapture = (e: MouseEvent) => e.stopPropagation();
+
       const deltaX = moveEvent.pageX - clickEvent.pageX;
       onDragChange(deltaX);
+
+      document.addEventListener("click", stopCapture, {
+        once: true,
+        capture: true,
+      });
     };
 
     const mouseUp = (moveEvent: MouseEvent) => {
       const deltaX = moveEvent.pageX - clickEvent.pageX;
       onDragEnd(deltaX);
+
+      /* mouseMove 이벤트 삭제하면서 click 이벤트 삭제 즉, mouseMove 이벤트가 발생했다면(드래그 했다면) click 이벤트 전파 방지 */
       document.removeEventListener("mousemove", mouseMove);
     };
 
     document.addEventListener("mousemove", mouseMove);
-    document.addEventListener("mouseup", mouseUp, { once: true });
+    document.addEventListener("mouseup", mouseUp, {
+      once: true,
+      capture: true,
+    });
   };
 
   return onMouseDown;

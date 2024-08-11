@@ -24,6 +24,15 @@ export const GlobalStyles = createGlobalStyle`
       cursor: not-allowed;
     }
   }
+  
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.palette.primary.black};
+     -webkit-user-select:all;
+  -moz-user-select:all;
+  -ms-user-select:all;
+  user-select:all
+  }
 
 `;
 

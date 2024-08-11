@@ -18,13 +18,21 @@ import {
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;
   size?: "large" | "small";
+  click: (id: number) => void;
+  // click: (ref: HTMLDivElement | null) => void;
 };
 
-const CardInfoCar = ({ listInfoCar, size = "large" }: CardInfoCarProps) => {
+const CardInfoCar = ({
+  listInfoCar,
+  size = "large",
+  click,
+}: CardInfoCarProps) => {
   const infosCar: DetailCarType = new Car(listInfoCar);
 
   return (
-    <Layout $isSmall={size === "small"}>
+    <Layout
+      $isSmall={size === "small"}
+      onClick={() => click(infosCar.carClassId)}>
       <Img src={infosCar.image} alt={infosCar.carClassName} size={size} />
       <Column>
         <NameTag>

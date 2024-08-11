@@ -1,8 +1,8 @@
-import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 import { Column, TitleSection } from "./AllCars.style";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import { CarInfoType } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
+import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 
 type BaseProps = {
   carList: CarInfoType[];
@@ -17,6 +17,13 @@ type LoadingProps = {
 type AllCarsProps = BaseProps | LoadingProps;
 
 const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
+  const click = (id: number) => {
+    console.log("all: ", id);
+
+    // const scrollY = ref?.getBoundingClientRect().top;
+    // window.scrollTo({ top: scrollY, behavior: "smooth" });
+  };
+
   return (
     <>
       <TitleSection>{"모든 차량"}</TitleSection>
@@ -25,7 +32,11 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
           hasLoading={hasLoading}
           fallback={<CarInfoSkeleton count={4} />}>
           {carList.map((carItem: CarInfoType) => (
-            <CardInfoCar key={carItem.carClassId} listInfoCar={carItem} />
+            <CardInfoCar
+              key={carItem.carClassId}
+              listInfoCar={carItem}
+              click={click}
+            />
           ))}
         </Skeleton>
       </Column>
