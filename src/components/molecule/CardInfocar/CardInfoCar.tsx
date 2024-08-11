@@ -13,7 +13,7 @@ import {
   Price,
   Tag,
   Unit,
-} from "./cardInfoCar.style";
+} from "./CardInfoCar.style";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;

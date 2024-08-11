@@ -1,8 +1,8 @@
 import { CarInfoType } from "@/types/CarInfo.type";
 import { TitleSection } from "../allCars/AllCars.style";
 import { Center } from "./SpecialOffers.style";
-import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 import Carousel from "@/components/molecule/carousel/Carousel";
+import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 
 type SpecialOffersProps = {
   listSpecial: CarInfoType[];

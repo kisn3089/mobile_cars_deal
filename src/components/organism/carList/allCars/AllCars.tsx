@@ -2,7 +2,7 @@ import { Column, TitleSection } from "./AllCars.style";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import { CarInfoType } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
-import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
+import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 
 type BaseProps = {
   carList: CarInfoType[];

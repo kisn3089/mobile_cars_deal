@@ -5,6 +5,7 @@ export const useFetchListCar = () => {
   const [selectId, setSelectId] = useState<number>();
   const [page, setPage] = useState<number>(1);
 
+  /* Observer 패턴 사용 */
   useEffect(() => {
     if (selectId) {
       const targetElement = `#${CSS.escape(selectId.toString())}`;
@@ -15,7 +16,7 @@ export const useFetchListCar = () => {
       window.scrollTo({ top: scrollY, behavior: "smooth" });
       setSelectId(undefined);
     }
-  }, [selectId, page]);
+  }, [selectId, page]); /* 지켜보고 있다 */
 
   const requestMore = () => {
     setPage((prev) => prev + 1);
