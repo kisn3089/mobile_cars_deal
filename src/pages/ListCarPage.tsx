@@ -21,7 +21,7 @@ const ListCarPage = () => {
             ment={`실패했습니다. \n 다시 시도해주세요!`}
             svgPath="/assets/ic_retry.svg"
             checkFor={false}
-            retry={() => resetErrorBoundary}
+            retry={resetErrorBoundary}
           />
         )}>
         <FetchMain />

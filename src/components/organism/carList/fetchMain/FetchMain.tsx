@@ -9,8 +9,8 @@ import Check from "@/components/molecule/check/Check";
 const FetchMain = () => {
   const [page, setPage] = useState(1);
   /* 조금이라도 빨리 API 호출 하기 위해서 Suspense Query 사용 */
-  const { data: getListCars } = GetCarListSuspense();
-  const getListCar: any[] = [];
+  const { data: getListCar } = GetCarListSuspense();
+  // const getListCar: any[] = [];
 
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
 

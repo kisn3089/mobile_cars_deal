@@ -9,7 +9,7 @@ export const GetCarListSuspense = () =>
     queryFn: () =>
       new Promise((resolve, reject) => {
         setTimeout(async () => {
-          resolve(coreAxios.get("/carClassess"));
+          resolve(coreAxios.get("/carClasses"));
         }, 3000);
       }),
     // coreAxios.get("/carClasses"),

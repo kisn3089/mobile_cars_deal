@@ -5,7 +5,6 @@ import { PropsWithChildren, Suspense } from "react";
 type CatchBoundaryProps = {
   loading: React.ReactElement;
   error: ({ resetErrorBoundary }: FallbackProps) => React.ReactElement;
-  // error: ({ onReset }: { onReset: () => void }) => React.ReactElement;
 } & PropsWithChildren;
 
 const CatchBoundary = ({ children, loading, error }: CatchBoundaryProps) => {

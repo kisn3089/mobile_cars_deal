@@ -1,7 +1,9 @@
 import React, { createElement } from "react";
+
 export type FallbackProps = {
   resetErrorBoundary: () => void;
 };
+
 /**
  * ErrorBoundary 컴포넌트의 프로퍼티를 정의합니다.
  * @interface ErrorBoundaryProps
@@ -43,6 +45,7 @@ class ErrorBoundary extends React.Component<
     console.error("Error caught by componentDidCatch:", error, errorInfo);
   }
 
+  /* Error 상태 Reset하여 리렌더 */
   reset(): void {
     this.props.onReset();
     this.setState({ hasError: false });
