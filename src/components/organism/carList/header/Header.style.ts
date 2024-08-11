@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 export const HeaderLayout = styled.header`
   width: 100%;
   padding: 24px;

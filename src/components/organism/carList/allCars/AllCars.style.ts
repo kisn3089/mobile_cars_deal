@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Layout = styled.div`
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => `0 ${theme.padding.layout}`};

@@ -24,11 +24,15 @@ export const GetCarList = () =>
     queryKey: [CAR_LIST],
     queryFn: () =>
       new Promise((resolve, reject) => {
-        setTimeout(async () => {
-          resolve(coreAxios.get("/carClasses"));
-        }, 3000);
+        try {
+          setTimeout(async () => {
+            resolve(coreAxios.get("/carClasses"));
+          }, 3000);
+        } catch (err) {
+          reject(err);
+        }
       }),
-    // coreAxios.get("/carClasses"),
+    // coreAxios.get("/carClassess"),
 
     // select: (data): CarInfoType[] => data.data,
     select: (data: any) => data.data,
