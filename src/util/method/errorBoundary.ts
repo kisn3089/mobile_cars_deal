@@ -1,11 +1,15 @@
-import React from "react";
+import React, { createElement } from "react";
+export type FallbackProps = {
+  resetErrorBoundary: () => void;
+};
 /**
  * ErrorBoundary 컴포넌트의 프로퍼티를 정의합니다.
  * @interface ErrorBoundaryProps
  */
 interface ErrorBoundaryProps {
-  fallback: JSX.Element;
-  children: JSX.Element;
+  fallback: React.ComponentType<FallbackProps>;
+  onReset: () => void;
+  children: React.ReactNode;
 }
 
 /**
@@ -29,18 +33,28 @@ class ErrorBoundary extends React.Component<
     super(props);
     this.state = { hasError: false };
   }
-  /* Error 발생시 hasError 상태 변경 */
+
+  /* Error 감지시 이벤트 */
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  /* Error 감지시 이벤트 */
+
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     console.error("Error caught by componentDidCatch:", error, errorInfo);
   }
 
+  reset(): void {
+    this.props.onReset();
+    this.setState({ hasError: false });
+  }
+
   render() {
+    const fallback = this.props.fallback;
+
     if (this.state.hasError) {
-      return this.props.fallback;
+      return createElement(fallback, {
+        resetErrorBoundary: this.reset.bind(this),
+      });
     }
 
     return this.props.children;

@@ -23,6 +23,6 @@ export const Ment = styled.h1`
   line-height: 150%;
 `;
 
-export const ReTry = styled.img`
+export const RetrySvg = styled.img`
   cursor: pointer;
 `;
