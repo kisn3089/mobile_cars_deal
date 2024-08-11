@@ -17,4 +17,4 @@ export type CalcPriceType = {
   discount(): string;
 };
 
-export type DetailCarType = CarInfoType & CalcPriceType;
+export type CarInfoWithPrice = CarInfoType & CalcPriceType;

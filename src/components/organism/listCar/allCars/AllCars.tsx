@@ -5,6 +5,7 @@ import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarI
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 import Modal from "@/components/core/modal/Modal";
 import DetailViewCar from "../../../molecule/detailViewCar/DetailViewCar";
+import CatchBoundary from "@/components/core/catchBoundary/CatchBoundary";
 
 type BaseProps = {
   carList: CarInfoType[];
@@ -40,7 +41,11 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
         </Skeleton>
       </Column>
       <Modal>
-        <DetailViewCar></DetailViewCar>
+        <CatchBoundary
+          error={({ resetErrorBoundary }) => <h1>Erorr</h1>}
+          loading={<h1>Loading</h1>}>
+          <DetailViewCar carClassId={carList[0].carClassId}></DetailViewCar>
+        </CatchBoundary>
       </Modal>
     </>
   );

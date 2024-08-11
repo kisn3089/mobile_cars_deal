@@ -1,4 +1,4 @@
-import { DetailCarType, CarInfoType } from "@/types/CarInfo.type";
+import { CarInfoWithPrice, CarInfoType } from "@/types/CarInfo.type";
 
 import Img from "@/components/atom/img/Image";
 import { Car } from "@/util/method/carInfoMethod";
@@ -27,7 +27,7 @@ const CardInfoCar = ({
   size = "medium",
   clickCardCar,
 }: CardInfoCarProps) => {
-  const infosCar: DetailCarType = new Car(listInfoCar);
+  const infosCar: CarInfoWithPrice = new Car(listInfoCar);
 
   return (
     <Layout

@@ -12,7 +12,7 @@ export const Center = styled.div`
   align-items: center;
 `;
 
-export const Dim = styled.div`
+export const Dim = styled.section`
   width: ${({ theme }) => theme.width.maxWidth};
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
