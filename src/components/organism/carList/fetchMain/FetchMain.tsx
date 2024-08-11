@@ -5,29 +5,14 @@ import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";
 import SpecialOffers from "../specialOffers/SpecialOffers";
 import Check from "@/components/molecule/check/Check";
+import { useFetchListCar } from "@/hooks/useFetchListCar";
 
 const FetchMain = () => {
-  const [select, setSelect] = useState<number>();
-  const [page, setPage] = useState<number>(1);
+  const { page, requestMore, clickCardCar } = useFetchListCar();
   const { data: getListCar } = GetCarListSuspense();
   // const getListCar: any[] = [];
 
-  useEffect(() => {
-    if (select) {
-      const t = `#${CSS.escape(select.toString())}`;
-      const scrollY = document
-        .querySelectorAll(t)[1]
-        .getBoundingClientRect().top;
-      window.scrollTo({ top: scrollY, behavior: "smooth" });
-      setSelect(undefined);
-    }
-  }, [select, page]);
-
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
-
-  const requestMore = () => {
-    setPage((prev) => prev + 1);
-  };
 
   // const specialFilter = dummy.filter(
   const specialFilter =
@@ -38,14 +23,6 @@ const FetchMain = () => {
     ) || [];
 
   const sliceList = getListCar?.slice(0, page * LIMIT) || [];
-
-  const clickCardCar = (id: number) => {
-    const rangePage = page * LIMIT;
-    if (rangePage < id) {
-      setPage(parseInt((id / LIMIT).toString()) + 1);
-    }
-    setSelect(id);
-  };
 
   return (
     <Check
