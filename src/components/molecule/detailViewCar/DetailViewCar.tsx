@@ -4,9 +4,7 @@ import {
   Layout,
   Name,
   Padding,
-  Table,
-  Td,
-  Th,
+  SubInfo,
 } from "./DetailViewCar.style";
 import { GetDetailCarSuspense } from "@/api/GetDetailCar";
 
@@ -24,12 +22,18 @@ const DetailViewCar = ({ carClassId }: DetailViewCarProps) => {
       <Padding>
         <ColumnGroup>
           <Name>{detailCar.carClassName}</Name>
-          <Table>
-            <Th>{`제조사: ${detailCar.maker}`}</Th>
-            <Td>{`분류: ${detailCar.carModel}`}</Td>
-            <Td>{`연료: ${detailCar.fuel}`}</Td>
-            <Td>{`변속 방지: ${detailCar.gearbox}`}</Td>
-          </Table>
+          <SubInfo>{`제조사: ${detailCar.maker}`}</SubInfo>
+          <SubInfo>{`분류: ${detailCar.carModel}`}</SubInfo>
+          <SubInfo>{`연료: ${detailCar.fuel}`}</SubInfo>
+          <SubInfo>{`변속 방지: ${detailCar.gearbox}`}</SubInfo>
+          <Name>{"안전 옵션"}</Name>
+          {detailCar.safetyOption.map((safeItem, i) => (
+            <SubInfo key={i}>{safeItem}</SubInfo>
+          ))}
+          <Name>{"편의 옵션"}</Name>
+          {detailCar.additionalOption.map((additional, i) => (
+            <SubInfo key={i}>{additional}</SubInfo>
+          ))}
         </ColumnGroup>
       </Padding>
     </Layout>

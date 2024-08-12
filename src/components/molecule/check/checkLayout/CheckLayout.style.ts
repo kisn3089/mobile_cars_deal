@@ -31,4 +31,5 @@ export const RetrySvg = styled.img`
 export const NoCar = styled.img`
   cursor: pointer;
   object-fit: contain;
+  height: 100px;
 `;

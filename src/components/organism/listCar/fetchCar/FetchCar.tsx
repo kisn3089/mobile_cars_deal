@@ -1,13 +1,15 @@
 import { GetCarListSuspense } from "@/api/GetCarList";
 import Footer from "../footer/Footer";
-import { LIMIT } from "@/util/contstants";
 import AllCars from "../allCars/AllCars";
 import SpecialOffers from "../specialOffers/SpecialOffers";
 import { useScrollList } from "@/hooks/useScrollList";
 import { createContext } from "react";
 import { defaultCarInfo } from "@/types/CarInfo.type";
 import MoreRequest from "@/components/atom/moreRequest/MoreRequest";
-import { Ment } from "@/components/molecule/check/checkLayout/CheckLayout.style";
+import {
+  Ment,
+  NoCar,
+} from "@/components/molecule/check/checkLayout/CheckLayout.style";
 import Check from "@/components/molecule/check/Check";
 
 const defaultListCar = {
@@ -26,6 +28,7 @@ const FetchMain = () => {
   const { data: getListCar } = GetCarListSuspense();
 
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
+  // const hasCar = false;
 
   const contextValue: DefaultListCar = {
     getListCar,
@@ -38,7 +41,12 @@ const FetchMain = () => {
     <ListCarContext.Provider value={contextValue}>
       <Check
         checkFor={hasCar}
-        fallback={<Ment>{`현재 차량이 없습니다.`}</Ment>}>
+        fallback={
+          <>
+            <Ment>{`현재 차량이 없습니다.`}</Ment>
+            <NoCar src="/assets/img/blue_car.webp" />
+          </>
+        }>
         <SpecialOffers />
         <AllCars />
         <Footer>
