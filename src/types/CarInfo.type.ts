@@ -18,3 +18,16 @@ export type CalcPriceType = {
 };
 
 export type CarInfoWithPrice = CarInfoType & CalcPriceType;
+
+export const defaultCarInfo = {
+  carClassId: 0,
+  carClassName: "",
+  carModel: "",
+  carTypeTags: [""],
+  discountPercent: 0,
+  drivingDistance: 0,
+  image: "",
+  price: 0,
+  regionGroups: [""],
+  year: 0,
+};

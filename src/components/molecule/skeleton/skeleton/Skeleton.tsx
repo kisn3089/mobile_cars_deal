@@ -6,11 +6,7 @@ type SkeletonProps = {
   fallback: React.ReactNode;
 } & PropsWithChildren;
 
-const Skeleton = ({
-  hasLoading,
-  children,
-  fallback = false,
-}: SkeletonProps) => {
+const Skeleton = ({ hasLoading, children, fallback }: SkeletonProps) => {
   if (!hasLoading) return <>{children}</>;
 
   return <SkeletonLayout>{fallback}</SkeletonLayout>;

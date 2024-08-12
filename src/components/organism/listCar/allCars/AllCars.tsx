@@ -6,20 +6,24 @@ import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 import Modal from "@/components/core/modal/Modal";
 import DetailViewCar from "../../../molecule/detailViewCar/DetailViewCar";
 import CatchBoundary from "@/components/core/catchBoundary/CatchBoundary";
+import { useContext } from "react";
+import { ListCarContext } from "../fetchCar/FetchCar";
+import { LIMIT } from "@/util/contstants";
 
-type BaseProps = {
-  carList: CarInfoType[];
-  hasLoading?: false;
-};
+// type BaseProps = {
+//   hasLoading?: false;
+// };
 
-type LoadingProps = {
-  hasLoading: true;
-  carList?: CarInfoType[];
-};
+// type LoadingProps = {
+//   hasLoading: true;
+// };
 
-type AllCarsProps = BaseProps | LoadingProps;
+type AllCarsProps = { hasLoading?: boolean };
 
-const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
+const AllCars = ({ hasLoading = false }: AllCarsProps) => {
+  const { sliceList, page } = useContext(ListCarContext);
+  const carList = sliceList?.slice(0, page * LIMIT) || [];
+
   const click = (id: number) => {
     console.log("all: ", id);
   };
@@ -40,13 +44,13 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
           ))}
         </Skeleton>
       </Column>
-      <Modal>
+      {/* <Modal>
         <CatchBoundary
           error={({ resetErrorBoundary }) => <h1>Erorr</h1>}
           loading={<h1>Loading</h1>}>
           <DetailViewCar carClassId={carList[0].carClassId}></DetailViewCar>
         </CatchBoundary>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

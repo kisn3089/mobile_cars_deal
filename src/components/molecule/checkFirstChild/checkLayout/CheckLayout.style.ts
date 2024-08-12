@@ -25,4 +25,10 @@ export const Ment = styled.h1`
 
 export const RetrySvg = styled.img`
   cursor: pointer;
+  object-fit: contain;
+`;
+
+export const NoCar = styled.img`
+  cursor: pointer;
+  object-fit: contain;
 `;

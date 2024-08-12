@@ -50,8 +50,9 @@ const CardInfoCar = ({
           <DiscountPrice carInfos={infosCar} />
         </Price>
         <Content>
-          {`${infosCar.year}년 • ${infosCar.driveFormat()} • `}
-          {infosCar.regionGroups.join("/")}
+          {`${
+            infosCar.year
+          }년 • ${infosCar.driveFormat()} • ${infosCar.regionGroups.join("/")}`}
         </Content>
       </Column>
     </Layout>

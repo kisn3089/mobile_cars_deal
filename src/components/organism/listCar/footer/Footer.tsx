@@ -1,18 +1,8 @@
-import { FooterLayout, RequestMore } from "./Footer.style";
+import { PropsWithChildren } from "react";
+import { FooterLayout } from "./Footer.style";
 
-type FooterProps = {
-  requestMore: () => void;
-  disabled?: boolean;
-};
-
-const Footer = ({ requestMore, disabled }: FooterProps) => {
-  return (
-    <FooterLayout>
-      <RequestMore onClick={requestMore} disabled={disabled}>
-        더보기
-      </RequestMore>
-    </FooterLayout>
-  );
+const Footer = ({ children }: PropsWithChildren) => {
+  return <FooterLayout>{children}</FooterLayout>;
 };
 
 export default Footer;
