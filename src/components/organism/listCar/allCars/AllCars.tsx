@@ -21,8 +21,9 @@ import { LIMIT } from "@/util/contstants";
 type AllCarsProps = { hasLoading?: boolean };
 
 const AllCars = ({ hasLoading = false }: AllCarsProps) => {
-  const { sliceList, page } = useContext(ListCarContext);
-  const carList = sliceList?.slice(0, page * LIMIT) || [];
+  const { getListCar, page } = useContext(ListCarContext);
+
+  const carList = getListCar?.slice(0, page * LIMIT) || [];
 
   const click = (id: number) => {
     console.log("all: ", id);

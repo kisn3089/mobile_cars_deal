@@ -6,10 +6,10 @@ type HasCarsProps = {
   fallback: React.ReactElement;
 } & PropsWithChildren;
 
-const CheckFirstChild = ({ children, checkFor, fallback }: HasCarsProps) => {
+const Check = ({ children, checkFor, fallback }: HasCarsProps) => {
   if (checkFor) return <>{children}</>;
 
   return <CheckLayout>{fallback}</CheckLayout>;
 };
 
-export default CheckFirstChild;
+export default Check;

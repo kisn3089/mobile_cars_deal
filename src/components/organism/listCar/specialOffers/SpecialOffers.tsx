@@ -3,19 +3,25 @@ import { TitleSection } from "../allCars/AllCars.style";
 import { Center } from "./SpecialOffers.style";
 import Carousel from "@/components/molecule/carousel/Carousel";
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
+import { useContext } from "react";
+import { ListCarContext } from "../fetchCar/FetchCar";
 
-type SpecialOffersProps = {
-  listSpecial: CarInfoType[];
-  clickCardCar: (id: number) => void;
-};
+const SpecialOffers = () => {
+  const { getListCar, clickCardCar } = useContext(ListCarContext);
 
-const SpecialOffers = ({ listSpecial, clickCardCar }: SpecialOffersProps) => {
+  const specialFilter =
+    getListCar?.filter(
+      (carItem: CarInfoType) => carItem.carTypeTags.includes("특가")
+      // &&
+      //   carItem.carTypeTags.includes("인기")
+    ) || [];
+
   return (
     <>
       <TitleSection>특가 차량</TitleSection>
       <Center>
-        <Carousel dataSize={listSpecial.length} gap={16}>
-          {listSpecial.map((item, i) => (
+        <Carousel dataSize={specialFilter.length} gap={16}>
+          {specialFilter.map((item, i) => (
             <CardInfoCar
               key={i}
               listInfoCar={item}
