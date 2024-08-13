@@ -3,13 +3,13 @@ import { ImageType, ImgSizeType } from "./Image.type";
 
 const sizeMode = {
   small: {
-    height: "120px",
+    minHeight: "120px",
   },
   medium: {
-    height: "160px",
+    minHeight: "160px",
   },
   large: {
-    height: "220px",
+    minHeight: "220px",
   },
 } as const;
 
@@ -21,7 +21,7 @@ type ImgProps = {
 };
 
 const Img = ({ src, size = "medium", alt, imgProps }: ImgProps) => {
-  const propsWithMode = { ...imgProps, ...sizeMode[size] };
+  const propsWithMode = { style: { ...imgProps, ...sizeMode[size] } };
   return <StyleImg src={src} alt={alt} {...propsWithMode} draggable={false} />;
 };
 

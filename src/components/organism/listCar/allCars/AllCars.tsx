@@ -10,14 +10,6 @@ import { useContext } from "react";
 import { ListCarContext } from "../fetchCar/FetchCar";
 import { LIMIT } from "@/util/contstants";
 
-// type BaseProps = {
-//   hasLoading?: false;
-// };
-
-// type LoadingProps = {
-//   hasLoading: true;
-// };
-
 type AllCarsProps = { hasLoading?: boolean };
 
 const AllCars = ({ hasLoading = false }: AllCarsProps) => {
@@ -44,14 +36,14 @@ const AllCars = ({ hasLoading = false }: AllCarsProps) => {
             />
           ))}
         </Skeleton>
+        <Modal>
+          <CatchBoundary
+            error={({ resetErrorBoundary }) => <h1>Erorr</h1>}
+            loading={<h1>Loading</h1>}>
+            <DetailViewCar carClassId={carList[0].carClassId}></DetailViewCar>
+          </CatchBoundary>
+        </Modal>
       </Column>
-      {/* <Modal>
-        <CatchBoundary
-          error={({ resetErrorBoundary }) => <h1>Erorr</h1>}
-          loading={<h1>Loading</h1>}>
-          <DetailViewCar carClassId={carList[0].carClassId}></DetailViewCar>
-        </CatchBoundary>
-      </Modal> */}
     </>
   );
 };

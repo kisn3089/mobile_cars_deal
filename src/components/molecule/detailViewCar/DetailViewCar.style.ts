@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
-export const Layout = styled.main`
-  width: 360px;
-  height: 600px;
-  background-color: ${({ theme }) => theme.palette.white};
-  border-radius: 12px;
+export const Layout = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: 100%;
 `;
 
 export const Padding = styled.div`
@@ -18,7 +13,7 @@ export const Padding = styled.div`
 export const ColumnGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   color: ${({ theme }) => theme.palette.primary.black};
 `;
 
@@ -30,6 +25,18 @@ export const Name = styled.h1`
 
 export const SubInfo = styled.p`
   font-size: ${({ theme }) => theme.fontSize[16]};
-  font-size: ${({ theme }) => theme.fontWeight[500]};
+  font-weight: ${({ theme }) => theme.fontWeight[500]};
   color: ${({ theme }) => theme.palette.gray.gray300};
+`;
+
+export const SquareLayout = styled.article`
+  width: 100%;
+  background-color: ${({ theme }) => theme.palette.white};
+  border-radius: 20px;
+  box-shadow: ${({ theme }) =>
+    `0px 0px 10px 5px ${theme.palette.gray.gray200}`};
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
 `;

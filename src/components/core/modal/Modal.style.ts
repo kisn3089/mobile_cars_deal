@@ -1,22 +1,26 @@
 import styled from "styled-components";
 
-export const Center = styled.div`
-  position: fixed;
-  min-width: 100vw;
-  min-height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 19;
+export const Layout = styled.main`
+  width: 360px;
+  height: 600px;
+  background-color: ${({ theme }) => theme.palette.white};
+  border-radius: 12px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 20px;
 `;
 
-export const Dim = styled.section`
-  width: ${({ theme }) => theme.width.maxWidth};
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Header = styled.header`
+  width: 100%;
+  height: 24px;
+  padding: 0 20px;
+`;
+
+export const XLogo = styled.img`
+  width: 24px;
+  height: 24px;
+  float: right;
+  cursor: pointer;
 `;
