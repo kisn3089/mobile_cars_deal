@@ -1,7 +1,6 @@
 import Img from "@/components/atom/img/Image";
 import {
   ColumnGroup,
-  Layout,
   Name,
   Padding,
   SquareLayout,
@@ -18,7 +17,7 @@ const DetailViewCar = ({ carClassId }: DetailViewCarProps) => {
   console.log(detailCar);
 
   return (
-    <Layout>
+    <>
       <Img src={detailCar.carImage} alt={detailCar.carClassName} size="large" />
       <Padding>
         <ColumnGroup>
@@ -43,7 +42,7 @@ const DetailViewCar = ({ carClassId }: DetailViewCarProps) => {
           </SquareLayout>
         </ColumnGroup>
       </Padding>
-    </Layout>
+    </>
   );
 };
 

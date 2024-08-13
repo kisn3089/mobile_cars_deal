@@ -1,7 +1,7 @@
-import { ListCarContext } from "@/components/organism/listCar/fetchCar/FetchCar";
 import { RequestMore } from "./MoreRequest.style";
 import { PropsWithChildren, useContext } from "react";
 import { LIMIT } from "@/util/contstants";
+import { ListCarContext } from "@/components/organism/listCar/fetchCar/fetchCarContext";
 
 const MoreRequest = ({ children }: PropsWithChildren) => {
   const { getListCar, page, requestMore } = useContext(ListCarContext);

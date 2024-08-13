@@ -4,7 +4,7 @@ import { Center } from "./SpecialOffers.style";
 import Carousel from "@/components/molecule/carousel/Carousel";
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 import { useContext } from "react";
-import { ListCarContext } from "../fetchCar/FetchCar";
+import { ListCarContext } from "../fetchCar/fetchCarContext";
 
 const SpecialOffers = () => {
   const { getListCar, clickCardCar } = useContext(ListCarContext);

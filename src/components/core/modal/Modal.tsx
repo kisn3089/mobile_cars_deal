@@ -3,9 +3,14 @@ import { Header, Layout, XLogo } from "./Modal.style";
 import { useCloseModal } from "@/hooks/useCloseModal";
 import ModalLayout from "./modalLayout/ModalLayout";
 
-const Modal = ({ children }: PropsWithChildren) => {
+type ModalProps = {
+  onClose: () => void;
+} & PropsWithChildren;
+
+const Modal = ({ children, onClose }: ModalProps) => {
   const insideRef = useRef<HTMLDivElement>(null);
-  const onClose = () => {};
+
+  /* Modal 외부 클릭 이벤트 탐지 */
   useCloseModal(insideRef, onClose);
 
   return (

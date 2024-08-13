@@ -9,7 +9,7 @@ type GetDetailCarProps = {
 
 export const GetDetailCarSuspense = ({ carClassId }: GetDetailCarProps) =>
   useSuspenseQuery({
-    queryKey: [CAR_DETAIL],
+    queryKey: [CAR_DETAIL, carClassId],
     queryFn: () =>
       // new Promise((resolve, reject) => {
       //   setTimeout(async () => {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export const useScrollList = () => {
   const [selectId, setSelectId] = useState<number>();
   const [page, setPage] = useState<number>(1);
+  const [detailCarId, setDetailCarId] = useState<number | null>(null);
 
   /* Observer 패턴 사용 */
   useEffect(() => {
@@ -30,5 +31,5 @@ export const useScrollList = () => {
     setSelectId(id);
   };
 
-  return { page, requestMore, clickCardCar };
+  return { page, detailCarId, setDetailCarId, requestMore, clickCardCar };
 };

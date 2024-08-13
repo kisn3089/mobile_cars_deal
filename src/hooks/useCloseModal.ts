@@ -20,10 +20,10 @@ export const useCloseModal = (
       if (e.code === "Escape") callback();
     };
 
-    document.addEventListener("click", onClose);
+    document.addEventListener("mousedown", onClose);
     document.addEventListener("keydown", ESCOnClose);
     return () => {
-      document.removeEventListener("click", onClose);
+      document.removeEventListener("mousedown", onClose);
       document.removeEventListener("keydown", ESCOnClose);
     };
   }, [outSideRef]);
