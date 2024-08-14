@@ -7,24 +7,22 @@ type GetDetailCarProps = {
   carClassId: number;
 };
 
+/* mode = /list | /loading | /fail */
 /* GET 선택한 차량 조회 */
 export const GetDetailCarSuspense = ({ carClassId }: GetDetailCarProps) =>
   useSuspenseQuery({
-    queryKey: [CAR_DETAIL, carClassId],
-    queryFn: () => coreAxios.get(`/carClasses/${carClassId}`),
-
-    select: (data): DetailCarType => data.data[0],
-  });
-
-/* GET 선택한 차량 조회 테스트 */
-export const TestGetDetailCar = ({ carClassId }: GetDetailCarProps) =>
-  useSuspenseQuery({
-    queryKey: [CAR_DETAIL, carClassId],
+    queryKey: [CAR_DETAIL, carClassId, window.location.pathname],
     queryFn: () =>
-      new Promise((resolve, reject) => {
+      new Promise<DetailCarType[]>((resolve) => {
+        const mode = window.location.pathname;
+        const endUrl =
+          mode !== "/fail" ? `/carClasses/${carClassId}` : "/쏘카가고싶어요";
+        if (mode === "/list")
+          coreAxios.get(endUrl).then((res) => resolve(res.data));
         setTimeout(async () => {
-          resolve(coreAxios.get(`/carClassess/${carClassId}`));
-        }, 2000);
+          coreAxios.get(endUrl).then((res) => resolve(res.data));
+        }, 3000);
       }),
-    select: (data: any) => data.data[0],
+
+    select: (data): DetailCarType => data[0],
   });

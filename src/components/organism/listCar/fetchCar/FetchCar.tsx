@@ -17,7 +17,6 @@ const FetchMain = () => {
   const { data: getListCar } = GetCarListSuspense();
 
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
-  // const hasCar = false;
 
   const contextValue: DefaultListCar = {
     getListCar,

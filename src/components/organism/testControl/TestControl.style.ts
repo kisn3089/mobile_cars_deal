@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Layout = styled.div`
-  position: absolute;
+export const Absolute = styled.div`
+  position: fixed;
   top: 50%;
   left: 10%;
   transform: translate3d(50%, -50%, 0);

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Circle, Layout, Svg } from "./TestControl.style";
+import { Circle, Absolute, Svg } from "./TestControl.style";
 
 const TestControl = () => {
   return (
-    <Layout>
+    <Absolute>
       <Link to={"/list"}>
         <Circle>
           <Svg src="/assets/icons/ic_success.svg" />
@@ -19,7 +19,7 @@ const TestControl = () => {
           <Svg src="/assets/icons/ic_fail.svg" />
         </Circle>
       </Link>
-    </Layout>
+    </Absolute>
   );
 };
 

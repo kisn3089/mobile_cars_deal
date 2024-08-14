@@ -9,24 +9,17 @@ export const GetCarListSuspense = () =>
   useSuspenseQuery({
     queryKey: [CAR_LIST, window.location.pathname],
     queryFn: () =>
-      new Promise((resolve, reject) => {
+      new Promise<CarInfoType[]>((resolve, reject) => {
         const mode = window.location.pathname;
         const endUrl = mode !== "/fail" ? "/carClasses" : "/쏘카가고싶어요";
-        if (mode === "/list") resolve(coreAxios.get(endUrl));
+        if (mode === "/list")
+          coreAxios.get(endUrl).then((res) => resolve(res.data));
 
         setTimeout(async () => {
           if (mode === "/fail") reject();
-          resolve(resolve(coreAxios.get(endUrl)));
+          coreAxios.get(endUrl).then((res) => resolve(res.data));
         }, 3000);
       }),
 
-    select: (data: any) => data.data,
-    // select: (data): CarInfoType[] => data.data,
+    select: (data): CarInfoType[] => data,
   });
-
-// const mode = window.location.pathname;
-// const endUrl = mode !== "/fail" ? "/carClasses" : "/쏘카가고싶어요";
-// if (mode === "/list") return coreAxios.get(endUrl);
-// // return coreAxios.get(endUrl);
-
-// return loadingStatus();
