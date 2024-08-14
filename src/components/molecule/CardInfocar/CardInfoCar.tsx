@@ -14,6 +14,7 @@ import {
   Unit,
 } from "./CardInfoCar.style";
 import { ImgSizeType } from "@/components/atom/img/Image.type";
+import { Animation } from "@/components/organism/listCar/allCars/AllCars.style";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoWithPrice;
@@ -27,34 +28,40 @@ const CardInfoCar = ({
   clickCardCar,
 }: CardInfoCarProps) => {
   return (
-    <Layout
-      id={listInfoCar.carClassId.toString()}
-      $isSmall={size === "small"}
-      onClick={() => clickCardCar(listInfoCar.carClassId)}>
-      <Img src={listInfoCar.image} alt={listInfoCar.carClassName} size={size} />
-      <Column>
-        <NameTag>
-          <Name>{listInfoCar.carClassName}</Name>
-          <Tag>
-            {listInfoCar.carTypeTags.map((tag, i) => (
-              <LabelTag key={i}>{tag}</LabelTag>
-            ))}
-          </Tag>
-        </NameTag>
-        <Price>
-          {listInfoCar.discount()}
-          <Unit>원</Unit>
-          <DiscountPrice carInfos={listInfoCar} />
-        </Price>
-        <Content>
-          {`${
-            listInfoCar.year
-          }년 • ${listInfoCar.driveFormat()} • ${listInfoCar.regionGroups.join(
-            "/"
-          )}`}
-        </Content>
-      </Column>
-    </Layout>
+    <Animation>
+      <Layout
+        id={listInfoCar.carClassId.toString()}
+        $isSmall={size === "small"}
+        onClick={() => clickCardCar(listInfoCar.carClassId)}>
+        <Img
+          src={listInfoCar.image}
+          alt={listInfoCar.carClassName}
+          size={size}
+        />
+        <Column>
+          <NameTag>
+            <Name>{listInfoCar.carClassName}</Name>
+            <Tag>
+              {listInfoCar.carTypeTags.map((tag, i) => (
+                <LabelTag key={i}>{tag}</LabelTag>
+              ))}
+            </Tag>
+          </NameTag>
+          <Price>
+            {listInfoCar.discount()}
+            <Unit>원</Unit>
+            <DiscountPrice carInfos={listInfoCar} />
+          </Price>
+          <Content>
+            {`${
+              listInfoCar.year
+            }년 • ${listInfoCar.driveFormat()} • ${listInfoCar.regionGroups.join(
+              "/"
+            )}`}
+          </Content>
+        </Column>
+      </Layout>
+    </Animation>
   );
 };
 
