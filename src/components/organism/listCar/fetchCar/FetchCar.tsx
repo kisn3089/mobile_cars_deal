@@ -10,59 +10,31 @@ import {
   Ment,
   NoCar,
 } from "@/components/core/failWithRetry/FailWithRetry.style";
-import { CarInfoType, CarInfoWithPrice } from "@/types/CarInfo.type";
 import { useSearchParams } from "react-router-dom";
 import { LIMIT } from "@/util/contstants";
-import { Car } from "@/util/method/carInfoMethod";
-
-type filterKeyType = {
-  search?: string; // includes
-  price?: string; // up
-  tags?: string; // filter
-  sort?: string; // sort
-};
+import { filterKeyType } from "@/types/filterKey.type";
+import { filteredBySearch, specialOnly } from "@/util/filteredListCar";
 
 const FetchMain = () => {
+  const [query] = useSearchParams();
   const { page, detailCarId, setDetailCarId, requestMore, clickCardCar } =
     useScrollList();
   const { data: getListCar } = GetCarListSuspense();
 
-  const specialFilter = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
-    const car = new Car(cur);
-    if (car.carTypeTags.includes("특가")) return [...acc, car];
-    return acc;
-  }, []);
-
-  const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
-
-  const [query] = useSearchParams();
-
   const filterKey: filterKeyType = {};
 
   query.forEach((value, key) => {
-    // console.log(key, value);
     Object.assign(filterKey, { [key]: value });
   });
-  // console.log(filterKey);
-  const { search, price, sort, tags } = filterKey;
 
-  const filteredList = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
-    const car = new Car(cur);
-
-    const filterPrice = price ? parseInt(car.discount()) >= +price : true;
-    const filterSearch = search ? car.carClassName.includes(search) : true;
-
-    if (filterPrice && filterSearch) {
-      return [...acc, car];
-    }
-
-    return acc;
-  }, []);
+  const specialFilter = specialOnly(getListCar);
+  const filteredList = filteredBySearch({ getListCar, filterKey });
 
   const filteredListCar = filteredList.slice(0, page * LIMIT);
   const totalPages = filteredList.length / LIMIT;
 
   console.log("filteredListCar: ", filteredListCar);
+  const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
 
   const contextValue: DefaultListCar = {
     filteredListCar,

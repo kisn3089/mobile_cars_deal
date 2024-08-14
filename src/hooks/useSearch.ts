@@ -56,7 +56,7 @@ export const useSearch = () => {
       return removeQuery("tags");
     }
 
-    query.set("tags", e.currentTarget.value);
+    query.set("tags", value);
     updateUrl();
   };
 

@@ -1,13 +1,11 @@
 import SearchForm from "@/components/molecule/searchForm/SearchForm";
-import {
-  FilterList,
-  ItemFilter,
-  Layout,
-  PriceOptionList,
-} from "./FilterControl.style";
+import { FilterList, ItemFilter, Layout } from "./FilterControl.style";
 import { useSearch } from "@/hooks/useSearch";
+import PriceFilter from "./priceFilter/PriceFilter";
+import { useSearchParams } from "react-router-dom";
 
 const FilterControl = () => {
+  const [query] = useSearchParams();
   const {
     searchValue,
     isOpenPrice,
@@ -19,8 +17,20 @@ const FilterControl = () => {
     onPopular,
   } = useSearch();
 
-  const currentUrl = window.location.search;
-  const parsingPrice = currentUrl.split("price=")[1];
+  const listFilter = [
+    {
+      label: "가격 👾",
+      value: "가격",
+      isActive: !!query.get("price") || isOpenPrice !== null,
+      onClick: togglePrice,
+    },
+    {
+      label: "인기 🧚",
+      value: "인기",
+      isActive: !!query.get("tags"),
+      onClick: onPopular,
+    },
+  ];
 
   return (
     <Layout>
@@ -31,46 +41,17 @@ const FilterControl = () => {
         onSearchEnter={onSearchEnter}
       />
       <FilterList>
-        <ItemFilter
-          onClick={togglePrice}
-          $isActive={currentUrl.includes("price")}>
-          가격 👾
-        </ItemFilter>
-        <ItemFilter
-          $isActive={currentUrl.includes("tags")}
-          onClick={onPopular}
-          value={"인기"}>
-          인기 🧚
-        </ItemFilter>
+        {listFilter.map((filterOption, i) => (
+          <ItemFilter
+            key={i}
+            $isActive={filterOption.isActive}
+            onClick={filterOption.onClick}
+            value={filterOption.value}>
+            {filterOption.label}
+          </ItemFilter>
+        ))}
       </FilterList>
-      {isOpenPrice && (
-        <PriceOptionList>
-          <ItemFilter
-            $isActive={parsingPrice === "100"}
-            onClick={onPriceFilter}
-            value={"100"}>
-            10만 이상
-          </ItemFilter>
-          <ItemFilter
-            $isActive={parsingPrice === "150"}
-            onClick={onPriceFilter}
-            value={"150"}>
-            15만 이상
-          </ItemFilter>
-          <ItemFilter
-            $isActive={parsingPrice === "200"}
-            onClick={onPriceFilter}
-            value={"200"}>
-            20만 이상
-          </ItemFilter>
-          <ItemFilter
-            $isActive={parsingPrice === "250"}
-            onClick={onPriceFilter}
-            value={"250"}>
-            25만 이상
-          </ItemFilter>
-        </PriceOptionList>
-      )}
+      {isOpenPrice && <PriceFilter onPriceFilter={onPriceFilter} />}
     </Layout>
   );
 };
