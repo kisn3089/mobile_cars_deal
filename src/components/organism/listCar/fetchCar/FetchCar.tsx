@@ -40,7 +40,7 @@ const FetchMain = () => {
   const filterKey: filterKeyType = {};
 
   query.forEach((value, key) => {
-    console.log(key, value);
+    // console.log(key, value);
     Object.assign(filterKey, { [key]: value });
   });
   // console.log(filterKey);

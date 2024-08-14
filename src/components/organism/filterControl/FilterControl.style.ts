@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Layout = styled.div`
   display: flex;
@@ -12,52 +12,36 @@ export const FilterList = styled.div`
   gap: 0 4px;
 `;
 
-export const ItemFilter = styled.button`
-  width: fit-content;
+export const ItemFilter = styled.button<{ $isActive?: boolean }>`
+  min-width: fit-content;
   height: 100%;
   border-radius: 20px;
   padding: 0 20px;
   font-size: ${({ theme }) => theme.fontSize[14]};
   font-weight: ${({ theme }) => theme.fontWeight[500]};
-  color: ${({ theme }) => theme.palette.primary.black};
+  color: ${({ theme, $isActive }) =>
+    $isActive ? theme.palette.primary.brand200 : theme.palette.primary.black};
   background-color: ${({ theme }) => theme.palette.white};
-  outline: ${({ theme }) => `1px solid ${theme.palette.gray.gray200}`};
+  outline: ${({ theme, $isActive }) =>
+    `1px solid ${
+      $isActive ? theme.palette.primary.brand200 : theme.palette.gray.gray200
+    }`};
   transition: ${({ theme }) =>
     `${theme.transTime.short} ${theme.transition.smooth}`};
 
   &:hover {
     outline: ${({ theme }) => `1px solid ${theme.palette.primary.brand200}`};
   }
+`;
 
-  &.price {
-    ${({ theme }) => {
-      const isActive = window.location.search.includes("price");
-      return `
-        color: ${
-          isActive
-            ? theme.palette.primary.brand200
-            : theme.palette.primary.black
-        };
-        outline: 1px solid ${
-          isActive ? theme.palette.primary.brand200 : theme.palette.gray.gray200
-        };
-      `;
-    }}
-  }
-
-  &.tags {
-    ${({ theme }) => {
-      const isActive = window.location.search.includes("tags");
-      return `
-        color: ${
-          isActive
-            ? theme.palette.primary.brand200
-            : theme.palette.primary.black
-        };
-        outline: 1px solid ${
-          isActive ? theme.palette.primary.brand200 : theme.palette.gray.gray200
-        };
-      `;
-    }}
-  }
+export const PriceOptionList = styled.div`
+  height: 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  animation: ${({ theme }) =>
+    css`
+      ${theme.animation.appearDown} ${theme.transTime.medium} ${theme.transition
+        .smooth}
+    `};
 `;

@@ -6,7 +6,7 @@ export const Relative = styled.div`
 
 export const InputSearch = styled.input`
   width: 100%;
-  height: 40px;
+  height: 44px;
   margin-top: 4px;
   border-radius: 20px;
   border: none;

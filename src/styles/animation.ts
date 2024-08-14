@@ -17,6 +17,17 @@ export const AppearUp = keyframes`
     }
 `;
 
+export const AppearDown = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY();
+    }
+`;
+
 export const FadeIn = keyframes`
     0% {
         opacity: 0;
