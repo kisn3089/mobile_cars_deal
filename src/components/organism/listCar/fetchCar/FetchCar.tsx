@@ -14,14 +14,12 @@ import { useSearchParams } from "react-router-dom";
 import { LIMIT } from "@/util/contstants";
 import { filterKeyType } from "@/types/filterKey.type";
 import { filteredBySearch, specialOnly } from "@/util/filteredListCar";
-import { dummy } from "@/util/dummy";
-import { Car } from "@/util/method/carInfoMethod";
 
 const FetchMain = () => {
   const [query] = useSearchParams();
   const { page, detailCarId, setDetailCarId, requestMore, clickCardCar } =
     useScrollList();
-  // const { data: getListCar } = GetCarListSuspense();
+  const { data: getListCar } = GetCarListSuspense();
 
   const filterKey: filterKeyType = {};
 
@@ -29,11 +27,8 @@ const FetchMain = () => {
     Object.assign(filterKey, { [key]: value });
   });
 
-  const carDummy = dummy.map((i) => new Car(i));
-  const specialFilter = specialOnly(carDummy);
-  const filteredList = filteredBySearch({ getListCar: carDummy, filterKey });
-  // const specialFilter = specialOnly(getListCar);
-  // const filteredList = filteredBySearch({ getListCar, filterKey });
+  const specialFilter = specialOnly(getListCar);
+  const filteredList = filteredBySearch({ getListCar, filterKey });
 
   const filteredListCar = filteredList.slice(0, page * LIMIT);
   const totalPages = filteredList.length / LIMIT;
