@@ -23,6 +23,8 @@ export const useSearch = () => {
     setSerachValue(e.target.value.toLocaleUpperCase());
   };
 
+  const onResetSearch = () => setSerachValue("");
+
   const updateUrl = () => navigator(`/list/query?${query.toString()}`);
 
   const removeQuery = (key: string) => {
@@ -54,6 +56,11 @@ export const useSearch = () => {
     if (e.code === "Enter" && !e.nativeEvent.isComposing) {
       onSearchClick();
     }
+
+    /* command + backspace로 검색값 초기화 */
+    if ((e.metaKey || e.ctrlKey) && e.code === "Backspace") {
+      onResetSearch();
+    }
   };
 
   const changeOption = (key: string) =>
@@ -70,5 +77,6 @@ export const useSearch = () => {
     onSearchEnter,
     changeOption,
     onSetFilter,
+    onResetSearch,
   };
 };

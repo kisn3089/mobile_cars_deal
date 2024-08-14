@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Relative = styled.div`
   position: relative;
@@ -29,4 +29,20 @@ export const SvgSearch = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
+`;
+
+export const SvgX = styled.img`
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translate3d(-50%, -50%, 0);
+  object-fit: contain;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  animation: ${({ theme }) =>
+    css`
+      ${theme.animation.fadeIn} ${theme.transTime.medium} ${theme.transition
+        .smooth}
+    `};
 `;

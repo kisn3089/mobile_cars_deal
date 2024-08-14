@@ -14,6 +14,7 @@ const FilterControl = () => {
     onSearchEnter,
     changeOption,
     onSetFilter,
+    onResetSearch,
   } = useSearch();
 
   const listFilter = [
@@ -47,6 +48,7 @@ const FilterControl = () => {
         onSearchValue={onSearchValue}
         onSearchClick={onSearchClick}
         onSearchEnter={onSearchEnter}
+        onResetSearch={onResetSearch}
       />
       <FilterList>
         {listFilter.map((filterOption, i) => (
