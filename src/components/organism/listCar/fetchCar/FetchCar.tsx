@@ -10,10 +10,13 @@ import {
   Ment,
   NoCar,
 } from "@/components/core/failWithRetry/FailWithRetry.style";
+import SearchForm from "@/components/molecule/searchForm/SearchForm";
+import { useFilter } from "@/hooks/useFilter";
 
 const FetchMain = () => {
   const { page, detailCarId, setDetailCarId, requestMore, clickCardCar } =
     useScrollList();
+  const { searchValue, onSearchValue } = useFilter();
   const { data: getListCar } = GetCarListSuspense();
 
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
@@ -22,6 +25,8 @@ const FetchMain = () => {
     getListCar,
     page,
     detailCarId,
+    searchValue,
+    onSearchValue,
     setDetailCarId,
     requestMore,
     clickCardCar,
@@ -29,6 +34,7 @@ const FetchMain = () => {
 
   return (
     <ListCarContext.Provider value={contextValue}>
+      <SearchForm />
       <Check
         checkFor={hasCar}
         fallback={

@@ -8,7 +8,7 @@ import FailWithRetry from "@/components/core/failWithRetry/FailWithRetry";
 
 const ListCarPage = () => {
   return (
-    <Flex>
+    <>
       <Header />
       <CatchBoundary
         loading={
@@ -19,9 +19,11 @@ const ListCarPage = () => {
         error={({ resetErrorBoundary }) => (
           <FailWithRetry retry={resetErrorBoundary} />
         )}>
-        <FetchCar />
+        <Flex>
+          <FetchCar />
+        </Flex>
       </CatchBoundary>
-    </Flex>
+    </>
   );
 };
 

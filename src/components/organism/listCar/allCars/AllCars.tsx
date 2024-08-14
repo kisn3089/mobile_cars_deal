@@ -11,9 +11,13 @@ import { ListCarContext } from "../fetchCar/fetchCarContext";
 type AllCarsProps = { hasLoading?: boolean };
 
 const AllCars = ({ hasLoading = false }: AllCarsProps) => {
-  const { getListCar, page, setDetailCarId } = useContext(ListCarContext);
+  const { getListCar, searchValue, page, setDetailCarId } =
+    useContext(ListCarContext);
 
-  const carList = getListCar?.slice(0, page * LIMIT) || [];
+  const carList =
+    getListCar
+      ?.filter((car) => car.carClassName.includes(searchValue))
+      .slice(0, page * LIMIT) || [];
 
   const cardClick = (id: number) => setDetailCarId(id);
 

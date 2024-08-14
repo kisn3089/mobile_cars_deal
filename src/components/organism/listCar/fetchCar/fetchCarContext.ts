@@ -5,6 +5,8 @@ const defaultListCar = {
   getListCar: [defaultCarInfo],
   page: 1,
   detailCarId: null as number | null,
+  searchValue: "",
+  onSearchValue: (e: React.ChangeEvent<HTMLInputElement>) => {},
   setDetailCarId: (_id: number | null) => {},
   requestMore: () => {},
   clickCardCar: (_id: number) => {},

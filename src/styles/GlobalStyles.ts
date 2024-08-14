@@ -24,14 +24,19 @@ export const GlobalStyles = createGlobalStyle`
       cursor: not-allowed;
     }
   }
+
+  input {
+    outline: none;
+    border: none;
+  }
   
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.palette.primary.black};
      -webkit-user-select:all;
-  -moz-user-select:all;
-  -ms-user-select:all;
-  user-select:all
+    -moz-user-select:all;
+    -ms-user-select:all;
+    user-select:all
   }
 
 `;
