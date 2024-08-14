@@ -10,23 +10,66 @@ import {
   Ment,
   NoCar,
 } from "@/components/core/failWithRetry/FailWithRetry.style";
-import SearchForm from "@/components/molecule/searchForm/SearchForm";
-import { useFilter } from "@/hooks/useFilter";
+import { CarInfoType, CarInfoWithPrice } from "@/types/CarInfo.type";
+import { useSearchParams } from "react-router-dom";
+import { LIMIT } from "@/util/contstants";
+import { Car } from "@/util/method/carInfoMethod";
+
+type filterKeyType = {
+  search?: string; // includes
+  price?: string; // up
+  tag?: string; // filter
+  sort?: string; // sort
+};
 
 const FetchMain = () => {
   const { page, detailCarId, setDetailCarId, requestMore, clickCardCar } =
     useScrollList();
-  const { searchValue, onSearchValue } = useFilter();
   const { data: getListCar } = GetCarListSuspense();
+
+  const specialFilter = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
+    const car = new Car(cur);
+    if (car.carTypeTags.includes("특가")) return [...acc, car];
+    return acc;
+  }, []);
 
   const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
 
+  const [query] = useSearchParams();
+
+  const filterKey: filterKeyType = {};
+
+  query.forEach((value, key) => {
+    console.log(key, value);
+    Object.assign(filterKey, { [key]: value });
+  });
+  console.log(filterKey);
+  const { search, price, sort, tag } = filterKey;
+
+  const filteredList = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
+    const car = new Car(cur);
+
+    const filterPrice = (price && parseInt(car.discount()) >= +price) || true;
+    const filterSearch = (search && car.carClassName.includes(search)) || true;
+
+    if (filterPrice || filterSearch) {
+      return [...acc, car];
+    }
+
+    return acc;
+  }, []);
+
+  const filteredListCar = filteredList.slice(0, page * LIMIT);
+  const totalPages = filteredList.length / LIMIT;
+
+  console.log("filteredListCar: ", filteredListCar);
+
   const contextValue: DefaultListCar = {
-    getListCar,
+    filteredListCar,
+    specialFilter,
     page,
     detailCarId,
-    searchValue,
-    onSearchValue,
+    totalPages,
     setDetailCarId,
     requestMore,
     clickCardCar,
@@ -34,7 +77,6 @@ const FetchMain = () => {
 
   return (
     <ListCarContext.Provider value={contextValue}>
-      <SearchForm />
       <Check
         checkFor={hasCar}
         fallback={

@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/list" replace />} />
         <Route path="/list" element={<ListCarPage />} />
+        <Route path="/list/:query" element={<ListCarPage />} />
         <Route path="/loading" element={<ListCarPage />} />
         <Route path="/fail" element={<ListCarPage />} />
         <Route path="*" element={<NotFound />} />

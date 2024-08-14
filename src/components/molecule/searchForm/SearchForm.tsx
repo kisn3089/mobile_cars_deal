@@ -1,9 +1,9 @@
-import { useContext } from "react";
 import { InputSearch, Relative, SvgSearch } from "./SearchForm.style";
-import { ListCarContext } from "@/components/organism/listCar/fetchCar/fetchCarContext";
+import { useSearch } from "@/hooks/useSearch";
 
 const SearchForm = () => {
-  const { searchValue, onSearchValue } = useContext(ListCarContext);
+  const { searchValue, onSearchValue, onSearchClick, onSearchEnter } =
+    useSearch();
 
   return (
     <Relative>
@@ -11,8 +11,13 @@ const SearchForm = () => {
         value={searchValue}
         onChange={onSearchValue}
         placeholder="차량을 검색해보세요! 🚙"
+        onKeyDown={onSearchEnter}
       />
-      <SvgSearch src="/assets/icons/ic_search.svg" alt="serach" />
+      <SvgSearch
+        src="/assets/icons/ic_search.svg"
+        alt="serach"
+        onClick={onSearchClick}
+      />
     </Relative>
   );
 };

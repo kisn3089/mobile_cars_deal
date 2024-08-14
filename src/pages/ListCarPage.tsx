@@ -5,11 +5,13 @@ import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarI
 import { Flex } from "@/components/organism/listCar/header/Header.style";
 import FetchCar from "@/components/organism/listCar/fetchCar/FetchCar";
 import FailWithRetry from "@/components/core/failWithRetry/FailWithRetry";
+import FilterControl from "@/components/organism/filterControl/FilterControl";
 
 const ListCarPage = () => {
   return (
     <>
       <Header />
+      <FilterControl />
       <CatchBoundary
         loading={
           <Skeleton

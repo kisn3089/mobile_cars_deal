@@ -1,3 +1,5 @@
+import { Car } from "@/util/method/carInfoMethod";
+
 export type CarInfoType = {
   carClassId: number;
   carClassName: string;
@@ -19,7 +21,7 @@ export type CalcPriceType = {
 
 export type CarInfoWithPrice = CarInfoType & CalcPriceType;
 
-export const defaultCarInfo = {
+export const defaultCarInfo: Car = new Car({
   carClassId: 0,
   carClassName: "",
   carModel: "",
@@ -30,4 +32,4 @@ export const defaultCarInfo = {
   price: 0,
   regionGroups: [""],
   year: 0,
-};
+});

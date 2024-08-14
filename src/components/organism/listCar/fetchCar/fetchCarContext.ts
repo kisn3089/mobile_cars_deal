@@ -2,11 +2,11 @@ import { defaultCarInfo } from "@/types/CarInfo.type";
 import { createContext } from "react";
 
 const defaultListCar = {
-  getListCar: [defaultCarInfo],
+  filteredListCar: [defaultCarInfo],
+  specialFilter: [defaultCarInfo],
   page: 1,
   detailCarId: null as number | null,
-  searchValue: "",
-  onSearchValue: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  totalPages: 0,
   setDetailCarId: (_id: number | null) => {},
   requestMore: () => {},
   clickCardCar: (_id: number) => {},

@@ -4,6 +4,7 @@ export const Gap = styled.div`
   display: flex;
   gap: 12px;
   flex-direction: column;
+  padding-top: 10px;
 `;
 
 export const Layout = styled.article`

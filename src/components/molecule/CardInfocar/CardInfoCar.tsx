@@ -1,7 +1,6 @@
-import { CarInfoWithPrice, CarInfoType } from "@/types/CarInfo.type";
+import { CarInfoWithPrice } from "@/types/CarInfo.type";
 
 import Img from "@/components/atom/img/Image";
-import { Car } from "@/util/method/carInfoMethod";
 import DiscountPrice from "../discountPrice/DiscountPrice";
 import { LabelTag } from "../labelTag/LabelTag.style";
 import {
@@ -17,7 +16,7 @@ import {
 import { ImgSizeType } from "@/components/atom/img/Image.type";
 
 type CardInfoCarProps = {
-  listInfoCar: CarInfoType;
+  listInfoCar: CarInfoWithPrice;
   size?: ImgSizeType;
   clickCardCar: (id: number) => void;
 };
@@ -27,32 +26,32 @@ const CardInfoCar = ({
   size = "medium",
   clickCardCar,
 }: CardInfoCarProps) => {
-  const infosCar: CarInfoWithPrice = new Car(listInfoCar);
-
   return (
     <Layout
-      id={infosCar.carClassId.toString()}
+      id={listInfoCar.carClassId.toString()}
       $isSmall={size === "small"}
-      onClick={() => clickCardCar(infosCar.carClassId)}>
-      <Img src={infosCar.image} alt={infosCar.carClassName} size={size} />
+      onClick={() => clickCardCar(listInfoCar.carClassId)}>
+      <Img src={listInfoCar.image} alt={listInfoCar.carClassName} size={size} />
       <Column>
         <NameTag>
-          <Name>{infosCar.carClassName}</Name>
+          <Name>{listInfoCar.carClassName}</Name>
           <Tag>
-            {infosCar.carTypeTags.map((tag, i) => (
+            {listInfoCar.carTypeTags.map((tag, i) => (
               <LabelTag key={i}>{tag}</LabelTag>
             ))}
           </Tag>
         </NameTag>
         <Price>
-          {infosCar.discount()}
+          {listInfoCar.discount()}
           <Unit>원</Unit>
-          <DiscountPrice carInfos={infosCar} />
+          <DiscountPrice carInfos={listInfoCar} />
         </Price>
         <Content>
           {`${
-            infosCar.year
-          }년 • ${infosCar.driveFormat()} • ${infosCar.regionGroups.join("/")}`}
+            listInfoCar.year
+          }년 • ${listInfoCar.driveFormat()} • ${listInfoCar.regionGroups.join(
+            "/"
+          )}`}
         </Content>
       </Column>
     </Layout>

@@ -1,23 +1,16 @@
 import { Column, TitleSection } from "./AllCars.style";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
-import { CarInfoType } from "@/types/CarInfo.type";
+import { CarInfoWithPrice } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
 import { useContext } from "react";
-import { LIMIT } from "@/util/contstants";
 import DetailCarPage from "@/pages/DetailCarPage";
 import { ListCarContext } from "../fetchCar/fetchCarContext";
 
 type AllCarsProps = { hasLoading?: boolean };
 
 const AllCars = ({ hasLoading = false }: AllCarsProps) => {
-  const { getListCar, searchValue, page, setDetailCarId } =
-    useContext(ListCarContext);
-
-  const carList =
-    getListCar
-      ?.filter((car) => car.carClassName.includes(searchValue))
-      .slice(0, page * LIMIT) || [];
+  const { filteredListCar, setDetailCarId } = useContext(ListCarContext);
 
   const cardClick = (id: number) => setDetailCarId(id);
 
@@ -28,7 +21,7 @@ const AllCars = ({ hasLoading = false }: AllCarsProps) => {
         <Skeleton
           hasLoading={hasLoading}
           fallback={<CarInfoSkeleton count={4} />}>
-          {carList.map((carItem: CarInfoType) => (
+          {filteredListCar.map((carItem: CarInfoWithPrice) => (
             <CardInfoCar
               key={carItem.carClassId}
               listInfoCar={carItem}
