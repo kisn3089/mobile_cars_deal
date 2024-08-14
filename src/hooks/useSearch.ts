@@ -16,8 +16,6 @@ export const useSearch = () => {
         keys = key;
       }
     });
-    console.log(keys);
-
     return keys;
   });
 
