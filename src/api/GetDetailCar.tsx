@@ -11,13 +11,13 @@ export const GetDetailCarSuspense = ({ carClassId }: GetDetailCarProps) =>
   useSuspenseQuery({
     queryKey: [CAR_DETAIL, carClassId],
     queryFn: () =>
-      // new Promise((resolve, reject) => {
-      //   setTimeout(async () => {
-      //     resolve(coreAxios.get(`/carClassess/${carClassId}`));
-      //   }, 3000);
-      // }),
-      coreAxios.get(`/carClasses/${carClassId}`),
+      new Promise((resolve, reject) => {
+        setTimeout(async () => {
+          resolve(coreAxios.get(`/carClasses/${carClassId}`));
+        }, 2000);
+      }),
+    // coreAxios.get(`/carClasse/${carClassId}`),
 
-    select: (data): DetailCarType => data.data[0],
-    // select: (data: any) => data.data[0],
+    // select: (data): DetailCarType => data.data[0],
+    select: (data: any) => data.data[0],
   });

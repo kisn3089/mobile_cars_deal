@@ -4,12 +4,12 @@ import AllCars from "../allCars/AllCars";
 import SpecialOffers from "../specialOffers/SpecialOffers";
 import { useScrollList } from "@/hooks/useScrollList";
 import MoreRequest from "@/components/atom/moreRequest/MoreRequest";
+import Check from "@/components/molecule/check/Check";
+import { DefaultListCar, ListCarContext } from "./fetchCarContext";
 import {
   Ment,
   NoCar,
-} from "@/components/molecule/check/checkLayout/CheckLayout.style";
-import Check from "@/components/molecule/check/Check";
-import { DefaultListCar, ListCarContext } from "./fetchCarContext";
+} from "@/components/core/failWithRetry/FailWithRetry.style";
 
 const FetchMain = () => {
   const { page, detailCarId, setDetailCarId, requestMore, clickCardCar } =
