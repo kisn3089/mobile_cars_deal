@@ -15,7 +15,7 @@ const AllCars = ({ hasLoading = false }: AllCarsProps) => {
 
   const carList = getListCar?.slice(0, page * LIMIT) || [];
 
-  const click = (id: number) => setDetailCarId(id);
+  const cardClick = (id: number) => setDetailCarId(id);
 
   return (
     <>
@@ -28,7 +28,7 @@ const AllCars = ({ hasLoading = false }: AllCarsProps) => {
             <CardInfoCar
               key={carItem.carClassId}
               listInfoCar={carItem}
-              clickCardCar={click}
+              clickCardCar={cardClick}
             />
           ))}
         </Skeleton>

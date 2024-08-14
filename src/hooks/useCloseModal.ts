@@ -10,8 +10,6 @@ export const useCloseModal = (
         outSideRef.current &&
         !outSideRef.current.contains(e.target as Node)
       ) {
-        console.log("modal click");
-
         callback();
       }
     };

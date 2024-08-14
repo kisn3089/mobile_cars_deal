@@ -6,7 +6,6 @@ import { useContext } from "react";
 
 const DetailCarPage = ({ onClose }: { onClose: () => void }) => {
   const { detailCarId } = useContext(ListCarContext);
-  console.log("detailCarId: ", detailCarId);
 
   if (!detailCarId) return null;
 

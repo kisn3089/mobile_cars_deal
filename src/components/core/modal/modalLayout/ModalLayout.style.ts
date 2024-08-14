@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Center = styled.div`
   position: fixed;
@@ -19,4 +19,10 @@ export const Dim = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: opacity;
+  animation: ${({ theme }) =>
+    css`
+      ${theme.animation.fadeIn} ${theme.transTime.short} ${theme.transition
+        .smooth}
+    `};
 `;

@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 import { toRem } from "../util/toRem";
-import { skeletonEffect } from "./animation";
+import { AppearUp, FadeIn, skeletonEffect } from "./animation";
 
 export type FontSizeType = typeof fontSize;
 export type FontWeightType = typeof fontWeight;
@@ -56,6 +56,7 @@ const palette = {
 
 const transTime = {
   short: "0.3s",
+  medium: "0.6s",
   long: "1.2s",
 };
 
@@ -65,6 +66,8 @@ const transition = {
 
 const animation = {
   skeletonEffect: skeletonEffect,
+  appearUp: AppearUp,
+  fadeIn: FadeIn,
 };
 
 export const theme: DefaultTheme = {

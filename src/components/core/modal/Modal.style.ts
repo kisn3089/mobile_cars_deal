@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Layout = styled.main`
   width: 360px;
@@ -10,6 +10,15 @@ export const Layout = styled.main`
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 20px;
+  will-change: transform, opacity;
+  animation: ${({ theme }) =>
+    css`
+      ${theme.animation.appearUp} ${theme.transTime.short} ${theme.transition
+        .smooth}
+    `};
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Header = styled.header`

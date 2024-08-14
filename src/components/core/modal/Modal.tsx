@@ -10,7 +10,7 @@ type ModalProps = {
 const Modal = ({ children, onClose }: ModalProps) => {
   const insideRef = useRef<HTMLDivElement>(null);
 
-  /* Modal 외부 클릭 이벤트 탐지 */
+  /* Modal 외부 mousedown 이벤트 탐지 */
   useCloseModal(insideRef, onClose);
 
   return (
