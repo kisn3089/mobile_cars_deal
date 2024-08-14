@@ -49,10 +49,10 @@ const FetchMain = () => {
   const filteredList = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
     const car = new Car(cur);
 
-    const filterPrice = (price && parseInt(car.discount()) >= +price) || true;
-    const filterSearch = (search && car.carClassName.includes(search)) || true;
+    const filterPrice = price ? parseInt(car.discount()) >= +price : true;
+    const filterSearch = search ? car.carClassName.includes(search) : true;
 
-    if (filterPrice || filterSearch) {
+    if (filterPrice && filterSearch) {
       return [...acc, car];
     }
 

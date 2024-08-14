@@ -11,11 +11,8 @@ export const useSearch = () => {
   };
 
   const onSearchClick = () => {
-    console.log("qweq");
-
-    if (searchValue) query.append("search", searchValue);
-    // query.append("price", "200");
-
+    if (searchValue) query.set("search", searchValue);
+    query.set("price", "200");
     navigator(`/list/query?${query.toString()}`);
   };
 
