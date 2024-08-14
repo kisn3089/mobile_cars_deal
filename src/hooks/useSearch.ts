@@ -5,6 +5,7 @@ export const useSearch = () => {
   const [searchValue, setSerachValue] = useState("");
   const navigator = useNavigate();
   const [query, setQuery] = useSearchParams();
+  const [isOpenPrice, setIsOpenPrice] = useState(query.get("price"));
 
   const onSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSerachValue(e.target.value);
@@ -25,5 +26,11 @@ export const useSearch = () => {
     }
   };
 
-  return { searchValue, onSearchValue, onSearchClick, onSearchEnter };
+  return {
+    searchValue,
+    isOpenPrice,
+    onSearchValue,
+    onSearchClick,
+    onSearchEnter,
+  };
 };

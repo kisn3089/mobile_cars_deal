@@ -1,10 +1,18 @@
 import { InputSearch, Relative, SvgSearch } from "./SearchForm.style";
-import { useSearch } from "@/hooks/useSearch";
 
-const SearchForm = () => {
-  const { searchValue, onSearchValue, onSearchClick, onSearchEnter } =
-    useSearch();
+type SearchFormProps = {
+  searchValue: string;
+  onSearchValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearchEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onSearchClick: (e: React.MouseEvent<HTMLImageElement>) => void;
+};
 
+const SearchForm = ({
+  searchValue,
+  onSearchValue,
+  onSearchClick,
+  onSearchEnter,
+}: SearchFormProps) => {
   return (
     <Relative>
       <InputSearch

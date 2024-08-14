@@ -18,7 +18,7 @@ import { Car } from "@/util/method/carInfoMethod";
 type filterKeyType = {
   search?: string; // includes
   price?: string; // up
-  tag?: string; // filter
+  tags?: string; // filter
   sort?: string; // sort
 };
 
@@ -43,8 +43,8 @@ const FetchMain = () => {
     console.log(key, value);
     Object.assign(filterKey, { [key]: value });
   });
-  console.log(filterKey);
-  const { search, price, sort, tag } = filterKey;
+  // console.log(filterKey);
+  const { search, price, sort, tags } = filterKey;
 
   const filteredList = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
     const car = new Car(cur);
