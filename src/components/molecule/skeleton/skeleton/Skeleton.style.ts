@@ -23,4 +23,9 @@ export const SkeletonLayout = styled.div`
         `};
     }
   }
+  animation: ${({ theme }) =>
+    css`
+      ${theme.animation.fadeIn} ${theme.transTime.short} ${theme.transition
+        .smooth}
+    `};
 `;
