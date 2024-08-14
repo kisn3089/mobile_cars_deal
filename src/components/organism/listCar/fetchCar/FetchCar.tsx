@@ -34,7 +34,7 @@ const FetchMain = () => {
   const totalPages = filteredList.length / LIMIT;
 
   console.log("filteredListCar: ", filteredListCar);
-  const hasCar = Array.isArray(getListCar) && getListCar.length > 0;
+  const hasCar = Array.isArray(filteredListCar) && filteredListCar.length > 0;
 
   const contextValue: DefaultListCar = {
     filteredListCar,

@@ -12,7 +12,7 @@ export const filteredBySearch = ({
   filterKey,
 }: FilteredListCarProps) => {
   const { search, price, sort, tags } = filterKey;
-  return getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
+  const filter = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
     const car = new Car(cur);
 
     const filterPrice = price ? parseInt(car.discount()) >= +price : true;
@@ -25,6 +25,14 @@ export const filteredBySearch = ({
 
     return acc;
   }, []);
+
+  if (sort && filter)
+    return filter.sort((a, b) =>
+      sort === "up"
+        ? parseInt(b.discount()) - parseInt(a.discount())
+        : parseInt(a.discount()) - parseInt(b.discount())
+    );
+  return filter;
 };
 
 export const specialOnly = (getListCar: CarInfoWithPrice[]) =>

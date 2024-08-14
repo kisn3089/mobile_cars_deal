@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const PriceOptionList = styled.div`
+export const OptionListLayout = styled.div`
   height: 36px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

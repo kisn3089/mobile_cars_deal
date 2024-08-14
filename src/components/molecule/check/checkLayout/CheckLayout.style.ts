@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Padding = styled.div`
-  padding: ${({ theme }) => `0 ${theme.padding.layout}`};
+  padding: ${({ theme }) => `40px ${theme.padding.layout}`};
 `;
 
 export const Layout = styled.div`

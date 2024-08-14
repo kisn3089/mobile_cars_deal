@@ -4,19 +4,40 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 export const useSearch = () => {
   const [searchValue, setSerachValue] = useState("");
   const navigator = useNavigate();
-  const [query, setQuery] = useSearchParams();
-  const [isOpenPrice, setIsOpenPrice] = useState<string | null>(
-    query.get("price")
-  );
+  const [query] = useSearchParams();
+  const [isOpenFilter, setIsOpenFilter] = useState<string | null>(() => {
+    let keys = "";
+    query.forEach((_, key) => {
+      if (key === "price") {
+        keys = key;
+      } else if (key === "tags") {
+        keys = key;
+      } else if (key === "sort") {
+        keys = key;
+      }
+    });
+    console.log(keys);
+
+    return keys;
+  });
 
   const onSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSerachValue(e.target.value);
+    setSerachValue(e.target.value.toLocaleUpperCase());
   };
 
   const updateUrl = () => navigator(`/list/query?${query.toString()}`);
 
   const removeQuery = (key: string) => {
     query.delete(key);
+    updateUrl();
+  };
+
+  const toggleQuery = (key: string, value: string) => {
+    if (query.get(key) === value) {
+      return removeQuery(key);
+    }
+
+    query.set(key, value);
     updateUrl();
   };
 
@@ -37,37 +58,19 @@ export const useSearch = () => {
     }
   };
 
-  const togglePrice = () =>
-    setIsOpenPrice((prev) => (prev === null ? "open" : null));
+  const changeOption = (key: string) =>
+    setIsOpenFilter((prev) => (prev === key ? null : key));
 
-  const onPriceFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { value } = e.currentTarget;
-    if (query.get("price") === value) {
-      return removeQuery("price");
-    }
-
-    query.set("price", value);
-    updateUrl();
-  };
-
-  const onPopular = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { value } = e.currentTarget;
-    if (query.get("tags") === value) {
-      return removeQuery("tags");
-    }
-
-    query.set("tags", value);
-    updateUrl();
-  };
+  const onSetFilter = (e: React.MouseEvent<HTMLButtonElement>, key: string) =>
+    toggleQuery(key, e.currentTarget.value);
 
   return {
     searchValue,
-    isOpenPrice,
+    isOpenFilter,
     onSearchValue,
     onSearchClick,
     onSearchEnter,
-    togglePrice,
-    onPriceFilter,
-    onPopular,
+    changeOption,
+    onSetFilter,
   };
 };

@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { ItemFilter } from "../FilterControl.style";
-import { PriceOptionList } from "./PriceFilter.style";
+import { OptionListLayout } from "./PriceFilter.style";
 
 type PriceFilterProps = {
   onPriceFilter: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -18,7 +18,7 @@ const PriceFilter = ({ onPriceFilter }: PriceFilterProps) => {
   const parsingPrice = query.get("price");
 
   return (
-    <PriceOptionList>
+    <OptionListLayout>
       {priceOptions.map((priceOption, i) => (
         <ItemFilter
           key={i}
@@ -28,7 +28,7 @@ const PriceFilter = ({ onPriceFilter }: PriceFilterProps) => {
           {priceOption.label}
         </ItemFilter>
       ))}
-    </PriceOptionList>
+    </OptionListLayout>
   );
 };
 
