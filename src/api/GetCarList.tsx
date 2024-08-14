@@ -8,18 +8,6 @@ import { CarInfoType } from "@/types/CarInfo.type";
 export const GetCarListSuspense = () =>
   useSuspenseQuery({
     queryKey: [CAR_LIST, window.location.pathname],
-    queryFn: () =>
-      new Promise<CarInfoType[]>((resolve, reject) => {
-        const mode = window.location.pathname;
-        const endUrl = mode !== "/fail" ? "/carClasses" : "/쏘카가고싶어요";
-        if (mode === "/list")
-          coreAxios.get(endUrl).then((res) => resolve(res.data));
-
-        setTimeout(async () => {
-          if (mode === "/fail") reject();
-          coreAxios.get(endUrl).then((res) => resolve(res.data));
-        }, 3000);
-      }),
-
-    select: (data): CarInfoType[] => data,
+    queryFn: () => coreAxios.get("/carClasses"),
+    select: (data): CarInfoType[] => data.data,
   });

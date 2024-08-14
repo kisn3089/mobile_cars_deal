@@ -11,7 +11,6 @@ type DetailViewCarProps = {
 
 const DetailViewCar = ({ carClassId }: DetailViewCarProps) => {
   const { data: detailCar } = GetDetailCarSuspense({ carClassId });
-  console.log(detailCar);
 
   return (
     <>
