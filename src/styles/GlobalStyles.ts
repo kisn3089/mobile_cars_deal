@@ -1,6 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+  html, body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+  
   * {
       box-sizing: border-box;
       text-rendering: optimizeLegibility;
@@ -48,7 +53,8 @@ export const RootCenter = styled.main`
 `;
 
 export const Layout = styled.div`
-  width: ${({ theme }) => theme.width.maxWidth};
+  max-width: ${({ theme }) => theme.width.maxWidth};
+  min-width: 390px;
   min-height: 100vh;
   color: ${({ theme }) => theme.palette.primary.black};
   background-color: ${({ theme }) => theme.palette.gray.gray100};

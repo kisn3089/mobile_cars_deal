@@ -1,9 +1,10 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px 0;
+  padding: 0 8px;
 `;
 
 export const FilterList = styled.div`
@@ -17,7 +18,7 @@ export const ItemFilter = styled.button<{ $isActive?: boolean }>`
   height: 100%;
   border-radius: 20px;
   padding: 0 20px;
-  font-size: ${({ theme }) => theme.fontSize[14]};
+  font-size: ${({ theme }) => theme.fontSize[12]};
   font-weight: ${({ theme }) => theme.fontWeight[500]};
   color: ${({ theme, $isActive }) =>
     $isActive ? theme.palette.primary.brand200 : theme.palette.primary.black};

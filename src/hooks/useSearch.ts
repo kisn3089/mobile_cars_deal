@@ -54,6 +54,7 @@ export const useSearch = () => {
     /* 중요한 깨달음... 한글로 Enter시 IME(Input Method Editor)가 자음과 모음을 하나의 음절로 연결하기 위해
         2번씩 렌더링 한다. */
     if (e.code === "Enter" && !e.nativeEvent.isComposing) {
+      // (document.activeElement as HTMLElement).blur(); // mobile Enter시 키보드 닫히는 기능
       onSearchClick();
     }
 

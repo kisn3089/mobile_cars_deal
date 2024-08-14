@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 
 export const Center = styled.div`
   position: fixed;
-  min-width: 100vw;
+  max-width: ${({ theme }) => theme.width.maxWidth};
+  width: 100vw;
   min-height: 100vh;
   top: 0;
   left: 0;
@@ -14,6 +15,7 @@ export const Center = styled.div`
 
 export const Dim = styled.section`
   width: ${({ theme }) => theme.width.maxWidth};
+  min-width: 390px;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
