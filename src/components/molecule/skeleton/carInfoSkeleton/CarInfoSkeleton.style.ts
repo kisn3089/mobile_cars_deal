@@ -17,6 +17,7 @@ export const Layout = styled.article`
   padding: 20px 12px;
   border-radius: 10px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray.gray200}`};
+  background-color: ${({ theme }) => theme.palette.white};
 `;
 
 export const Column = styled.section`

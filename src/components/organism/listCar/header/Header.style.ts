@@ -18,3 +18,7 @@ export const HeaderTitle = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.palette.primary.black};
 `;
+
+export const Padding = styled.div`
+  padding: 12px;
+`;
