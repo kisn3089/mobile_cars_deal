@@ -39,5 +39,10 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.0",
     "vite-tsconfig-paths": "^5.0.1"
-  }
+  },
+  "description": "<<<<<<< HEAD # 프로젝트 설명",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
