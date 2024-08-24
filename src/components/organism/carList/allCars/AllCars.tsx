@@ -35,7 +35,7 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
             <CardInfoCar
               key={carItem.carClassId}
               listInfoCar={carItem}
-              click={click}
+              clickCardCar={click}
             />
           ))}
         </Skeleton>

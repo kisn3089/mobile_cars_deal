@@ -13,26 +13,27 @@ import {
   Price,
   Tag,
   Unit,
-} from "./CardInfoCar.style";
+} from "./cardInfoCar.style";
 
 type CardInfoCarProps = {
   listInfoCar: CarInfoType;
   size?: "large" | "small";
-  click: (id: number) => void;
+  clickCardCar: (id: number) => void;
   // click: (ref: HTMLDivElement | null) => void;
 };
 
 const CardInfoCar = ({
   listInfoCar,
   size = "large",
-  click,
+  clickCardCar,
 }: CardInfoCarProps) => {
   const infosCar: DetailCarType = new Car(listInfoCar);
 
   return (
     <Layout
+      id={infosCar.carClassId.toString()}
       $isSmall={size === "small"}
-      onClick={() => click(infosCar.carClassId)}>
+      onClick={() => clickCardCar(infosCar.carClassId)}>
       <Img src={infosCar.image} alt={infosCar.carClassName} size={size} />
       <Column>
         <NameTag>

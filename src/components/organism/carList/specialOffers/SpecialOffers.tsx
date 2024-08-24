@@ -3,25 +3,13 @@ import { TitleSection } from "../allCars/AllCars.style";
 import { Center } from "./SpecialOffers.style";
 import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 import Carousel from "@/components/molecule/carousel/Carousel";
-import { Link } from "react-router-dom";
 
 type SpecialOffersProps = {
   listSpecial: CarInfoType[];
+  clickCardCar: (id: number) => void;
 };
 
-const SpecialOffers = ({ listSpecial }: SpecialOffersProps) => {
-  const click = (id: number) => {
-    console.log("offers: ", id);
-
-    // console.log("listSpecial: ", listSpecial);
-
-    // console.log(id);
-
-    // const scrollY = ref?.getBoundingClientRect().top;
-    // console.log(ref?.getBoundingClientRect());
-    // window.scrollTo({ top: scrollY, behavior: "smooth" });
-  };
-
+const SpecialOffers = ({ listSpecial, clickCardCar }: SpecialOffersProps) => {
   return (
     <>
       <TitleSection>특가 차량</TitleSection>
@@ -32,7 +20,7 @@ const SpecialOffers = ({ listSpecial }: SpecialOffersProps) => {
               key={i}
               listInfoCar={item}
               size="small"
-              click={click}
+              clickCardCar={clickCardCar}
             />
           ))}
         </Carousel>
