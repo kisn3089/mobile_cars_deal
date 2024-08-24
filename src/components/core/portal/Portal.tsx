@@ -9,7 +9,7 @@ export const Portal = ({ children }: PropsWithChildren) => {
     document.body.style.touchAction = "none";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "unset";
       document.body.style.touchAction = "auto";
     };
   }, [modal]);

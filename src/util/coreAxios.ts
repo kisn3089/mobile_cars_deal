@@ -14,7 +14,7 @@ const onRequest = async (request: InternalAxiosRequestConfig) => {
   const mode = window.location.pathname.split("/")[1];
 
   if (mode === "list") return request;
-  if (mode === "fail") request.url = "/wanttogosocar";
+  if (mode === "fail") request.url = "/fai;";
 
   await delayRequest(request);
 
