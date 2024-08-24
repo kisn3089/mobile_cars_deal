@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 프로젝트 설명
 
 ## 테스트 안내
@@ -288,3 +289,6 @@ url값만 업데이팅 해주면 되는거였다. 오류 가능성이 현저히 
 useSearchParams라는 react-router-dom에서 제공하는 메소드로 필터링 시스템을 모두 구현하였다.
 
 `price` `tags` `name` `sort`
+=======
+## init
+>>>>>>> 32c6f175 ([Init])

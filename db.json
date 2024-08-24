@@ -12,6 +12,7 @@
       "regionGroups": ["서울/경기/인천", "광주"],
       "carTypeTags": ["전기차", "특가"]
     },
+
     {
       "carClassId": 2,
       "carClassName": "테슬라 모델Y",
