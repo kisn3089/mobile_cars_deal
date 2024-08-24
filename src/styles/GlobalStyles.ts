@@ -53,6 +53,7 @@ export const RootCenter = styled.main`
 `;
 
 export const Layout = styled.div`
+  width: 100vw;
   max-width: ${({ theme }) => theme.width.maxWidth};
   min-width: 390px;
   min-height: 100vh;

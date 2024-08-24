@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Center = styled.div`
   position: fixed;
-  max-width: ${({ theme }) => theme.width.maxWidth};
   width: 100vw;
   min-height: 100vh;
   top: 0;
