@@ -1,10 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import CarListPage from "./page/CarListPage";
 import NotFound from "./components/molecule/notFound/NotFound";
-
-const BASE_URL = "http://localhost:8080";
+import { coreAxios } from "./util/coreAxios";
 
 function App() {
+  const test = async () => {
+    const res = await coreAxios.get("/carClasses");
+    console.log("result: ", res);
+  };
+  test();
+  // console.log(import.meta.env.VITE_BASE_URL);
+
   return (
     // <div className="App">
     //   <header className="App-header">
