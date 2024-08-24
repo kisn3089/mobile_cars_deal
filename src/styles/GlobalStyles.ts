@@ -43,7 +43,7 @@ export const RootCenter = styled.main`
 `;
 
 export const Layout = styled.div`
-  width: 420px;
+  width: ${({ theme }) => theme.width.maxWidth};
   min-height: 100vh;
   color: ${({ theme }) => theme.palette.primary.black};
   background-color: ${({ theme }) => theme.palette.gray.gray100};

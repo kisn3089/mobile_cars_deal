@@ -1,5 +1,5 @@
 import Header from "@/components/organism/carList/header/Header";
-import CatchBoundary from "@/components/molecule/catchBoundary/CatchBoundary";
+import CatchBoundary from "@/components/core/catchBoundary/CatchBoundary";
 import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
 import { Flex } from "@/components/organism/carList/header/Header.style";

@@ -3,6 +3,7 @@ import Skeleton from "@/components/molecule/skeleton/skeleton/Skeleton";
 import { CarInfoType } from "@/types/CarInfo.type";
 import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarInfoSkeleton";
 import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
+import Modal from "@/components/core/modal/Modal";
 
 type BaseProps = {
   carList: CarInfoType[];
@@ -19,9 +20,6 @@ type AllCarsProps = BaseProps | LoadingProps;
 const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
   const click = (id: number) => {
     console.log("all: ", id);
-
-    // const scrollY = ref?.getBoundingClientRect().top;
-    // window.scrollTo({ top: scrollY, behavior: "smooth" });
   };
 
   return (
@@ -40,6 +38,9 @@ const AllCars = ({ carList = [], hasLoading = false }: AllCarsProps) => {
           ))}
         </Skeleton>
       </Column>
+      <Modal>
+        <div></div>
+      </Modal>
     </>
   );
 };

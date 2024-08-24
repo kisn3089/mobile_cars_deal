@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "@/components/molecule/notFound/NotFound";
 import ListCarPage from "./pages/ListCarPage";
-import DetailCarPage from "./pages/DetailCarPage";
 import "@/styles/font.css";
 
 function App() {
@@ -9,7 +8,6 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/list" replace />} />
       <Route path="/list" element={<ListCarPage />} />
-      <Route path="/list/:id" element={<DetailCarPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

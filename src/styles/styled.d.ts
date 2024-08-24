@@ -7,6 +7,7 @@ import {
   TransTimeType,
   AnimationType,
   PaddingType,
+  WidthType,
 } from "./theme";
 
 declare module "styled-components" {
@@ -18,5 +19,6 @@ declare module "styled-components" {
     transTime: TransTimeType;
     animation: AnimationType;
     padding: PaddingType;
+    width: WidthType;
   }
 }

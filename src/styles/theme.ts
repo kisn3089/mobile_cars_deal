@@ -9,6 +9,7 @@ export type TransitionType = typeof transition;
 export type TransTimeType = typeof transTime;
 export type AnimationType = typeof animation;
 export type PaddingType = typeof padding;
+export type WidthType = typeof width;
 
 const fontSize = {
   10: toRem(10),
@@ -29,6 +30,10 @@ const fontWeight = {
 
 const padding = {
   layout: "20px",
+};
+
+const width = {
+  maxWidth: "420px",
 };
 
 const palette = {
@@ -70,4 +75,5 @@ export const theme: DefaultTheme = {
   transTime,
   animation,
   padding,
+  width,
 };
