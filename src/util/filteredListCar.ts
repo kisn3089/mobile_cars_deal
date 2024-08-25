@@ -4,13 +4,19 @@ import { filterKeyType } from "@/types/filterKey.type";
 
 type FilteredListCarProps = {
   getListCar: CarInfoWithPrice[];
-  filterKey: filterKeyType;
+  query: URLSearchParams;
 };
 
 export const filteredBySearch = ({
   getListCar,
-  filterKey,
+  query,
 }: FilteredListCarProps) => {
+  const filterKey: filterKeyType = {};
+
+  query.forEach((value, key) => {
+    Object.assign(filterKey, { [key]: value });
+  });
+
   const { search, price, sort, tags } = filterKey;
   const filter = getListCar.reduce<CarInfoWithPrice[]>((acc, cur) => {
     const car = new Car(cur);

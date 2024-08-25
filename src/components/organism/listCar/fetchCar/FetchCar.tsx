@@ -12,7 +12,6 @@ import {
 } from "@/components/core/failWithRetry/FailWithRetry.style";
 import { useSearchParams } from "react-router-dom";
 import { LIMIT } from "@/util/contstants";
-import { filterKeyType } from "@/types/filterKey.type";
 import { filteredBySearch, specialOnly } from "@/util/filteredListCar";
 
 const FetchMain = () => {
@@ -21,14 +20,8 @@ const FetchMain = () => {
     useScrollList();
   const { data: getListCar } = GetCarListSuspense();
 
-  const filterKey: filterKeyType = {};
-
-  query.forEach((value, key) => {
-    Object.assign(filterKey, { [key]: value });
-  });
-
   const specialFilter = specialOnly(getListCar);
-  const filteredList = filteredBySearch({ getListCar, filterKey });
+  const filteredList = filteredBySearch({ getListCar, query });
 
   const filteredListCar = filteredList.slice(0, page * LIMIT);
   const totalPages = filteredList.length / LIMIT;
