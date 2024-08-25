@@ -1,6 +1,7 @@
 import PriceFilter from "../priceFilter/PriceFilter";
 import TagsFilter from "../tagsFilter/TagsFilter";
 import SortFilter from "../sortFilter/SortFilter";
+import { GetCarListSuspense } from "@/api/GetCarList";
 
 type OpenSubFilterProps = {
   isOpenFilter: string | null;
@@ -8,6 +9,9 @@ type OpenSubFilterProps = {
 };
 
 const OpenSubFilter = ({ isOpenFilter, onSetFilter }: OpenSubFilterProps) => {
+  const { data: getListCar, isSuccess } = GetCarListSuspense();
+  if (isSuccess) console.log(getListCar);
+
   if (isOpenFilter === "price")
     return <PriceFilter onPriceFilter={(e) => onSetFilter(e, "price")} />;
   if (isOpenFilter === "tags")
