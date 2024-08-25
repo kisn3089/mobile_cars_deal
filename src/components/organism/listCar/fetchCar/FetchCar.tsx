@@ -12,7 +12,7 @@ import {
 } from "@/components/core/failWithRetry/FailWithRetry.style";
 import { useSearchParams } from "react-router-dom";
 import { LIMIT } from "@/util/contstants";
-import { filteredBySearch, specialOnly } from "@/util/filteredListCar";
+import { filteredBySearch } from "@/util/filteredListCar";
 
 const FetchMain = () => {
   const [query] = useSearchParams();
@@ -20,7 +20,6 @@ const FetchMain = () => {
     useScrollList();
   const { data: getListCar } = GetCarListSuspense();
 
-  const specialFilter = specialOnly(getListCar);
   const filteredList = filteredBySearch({ getListCar, query });
 
   const filteredListCar = filteredList.slice(0, page * LIMIT);
@@ -29,8 +28,6 @@ const FetchMain = () => {
   const hasCar = Array.isArray(filteredListCar) && filteredListCar.length > 0;
 
   const contextValue: DefaultListCar = {
-    filteredListCar,
-    specialFilter,
     page,
     detailCarId,
     totalPages,
