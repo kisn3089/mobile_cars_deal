@@ -46,4 +46,4 @@ export const specialOnly = (getListCar: CarInfoWithPrice[]) =>
     return acc;
   }, []);
 
-const toNumber = (price: string) => parseInt(price.replace(/,/g, ""));
+export const toNumber = (price: string) => parseInt(price.replace(/,/g, ""));
