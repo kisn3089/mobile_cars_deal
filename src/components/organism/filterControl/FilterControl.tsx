@@ -23,21 +23,18 @@ const FilterControl = () => {
       value: "가격",
       key: "price",
       isActive: !!query.get("price") || isOpenFilter === "price",
-      onClick: changeOption,
     },
     {
       label: "태그 🧚",
       value: "태그",
       key: "tags",
       isActive: !!query.get("tags") || isOpenFilter === "tags",
-      onClick: changeOption,
     },
     {
       label: "가격 정렬 🧬",
       value: "정렬",
       key: "sort",
       isActive: !!query.get("sort") || isOpenFilter === "sort",
-      onClick: changeOption,
     },
   ];
 
@@ -55,7 +52,7 @@ const FilterControl = () => {
           <ItemFilter
             key={i}
             $isActive={filterOption.isActive}
-            onClick={() => filterOption.onClick(filterOption.key)}
+            onClick={() => changeOption(filterOption.key)}
             value={filterOption.value}>
             {filterOption.label}
           </ItemFilter>

@@ -40,9 +40,16 @@
     "vite": "^4.3.0",
     "vite-tsconfig-paths": "^5.0.1"
   },
-  "description": "<<<<<<< HEAD # 프로젝트 설명",
+  "description": "자동차 중고 거래 플랫폼 도메인으로 API 호출에 의한 성공, 로딩, 실패 상황을 쉽게 테스트해볼 수 있는 환경을 만든 프로젝트",
   "main": "index.js",
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "car",
+    "useQuery",
+    "restful",
+    "loading",
+    "error",
+    "success"
+  ],
+  "author": "Stems",
   "license": "ISC"
 }

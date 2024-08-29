@@ -14,7 +14,6 @@ const ListCarPage = () => {
   return (
     <>
       <Header />
-      <FilterControl />
       <CatchBoundary
         loading={
           <Skeleton
@@ -28,6 +27,7 @@ const ListCarPage = () => {
         error={({ resetErrorBoundary }) => (
           <FailWithRetry retry={resetErrorBoundary} />
         )}>
+        <FilterControl />
         <Flex>
           <FetchCar />
         </Flex>

@@ -17,7 +17,7 @@ export const ItemFilter = styled.button<{ $isActive?: boolean }>`
   min-width: fit-content;
   height: 100%;
   border-radius: 20px;
-  padding: 0 20px;
+  padding: 10px 20px;
   font-size: ${({ theme }) => theme.fontSize[12]};
   font-weight: ${({ theme }) => theme.fontWeight[500]};
   color: ${({ theme, $isActive }) =>
