@@ -1,7 +1,7 @@
 import { TitleSection } from "../allCars/AllCars.style";
 import { Center } from "./SpecialOffers.style";
 import Carousel from "@/components/molecule/carousel/Carousel";
-import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
+import CardInfoCar from "@/components/molecule/cardInfosCar/CardInfoCar";
 import { useContext } from "react";
 import { ListCarContext } from "../fetchCar/fetchCarContext";
 import { GetCarListSuspense } from "@/api/GetCarList";
