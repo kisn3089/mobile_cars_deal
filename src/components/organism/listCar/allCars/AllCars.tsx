@@ -5,7 +5,7 @@ import CarInfoSkeleton from "@/components/molecule/skeleton/carInfoSkeleton/CarI
 import { useContext } from "react";
 import DetailCarPage from "@/pages/DetailCarPage";
 import { ListCarContext } from "../fetchCar/fetchCarContext";
-import CardInfoCar from "@/components/molecule/cardInfocar/CardInfoCar";
+import CardInfoCar from "@/components/molecule/cardInfoCar/CardInfoCar";
 import { GetCarListSuspense } from "@/api/GetCarList";
 import { useSearchParams } from "react-router-dom";
 import { filteredBySearch } from "@/util/filteredListCar";
