@@ -14,7 +14,7 @@ const ListCarPage = () => {
   return (
     <>
       <Header />
-      <CatchBoundary
+      {/* <CatchBoundary
         loading={
           <Skeleton
             hasLoading={true}
@@ -31,7 +31,7 @@ const ListCarPage = () => {
         <Flex>
           <FetchCar />
         </Flex>
-      </CatchBoundary>
+      </CatchBoundary> */}
     </>
   );
 };
