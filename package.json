@@ -44,6 +44,8 @@
     "API",
     "loading",
     "error",
+    "success",
+    "action",
     "json-server"
   ],
   "author": "Stems",
