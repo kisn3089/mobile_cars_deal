@@ -14,6 +14,9 @@ export const FilterList = styled.div`
 `;
 
 export const ItemFilter = styled.button<{ $isActive?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: fit-content;
   height: 100%;
   border-radius: 20px;

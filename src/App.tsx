@@ -9,10 +9,8 @@ function App() {
     <>
       <TestControl />
       <Routes>
-        <Route path="/" element={<Navigate to="/list" replace />} />
-        <Route path="/list" element={<ListCarPage />} />
+        <Route path="/" element={<Navigate to="/list/query" replace />} />
         <Route path="/list/:query" element={<ListCarPage />} />
-        <Route path="/loading" element={<ListCarPage />} />
         <Route path="/loading/:query" element={<ListCarPage />} />
         <Route path="/fail" element={<ListCarPage />} />
         <Route path="*" element={<NotFound />} />
