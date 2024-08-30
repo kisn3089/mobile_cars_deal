@@ -4,12 +4,12 @@ import { Circle, Absolute, Svg } from "./TestControl.style";
 const TestControl = () => {
   return (
     <Absolute>
-      <Link to={"/list"}>
+      <Link to={"/list/query"}>
         <Circle>
           <Svg src="/assets/icons/ic_success.svg" />
         </Circle>
       </Link>
-      <Link to={"/loading"}>
+      <Link to={"/loading/query"}>
         <Circle>
           <Svg src="/assets/icons/ic_loading.svg" />
         </Circle>
