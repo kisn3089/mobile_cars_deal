@@ -41,11 +41,12 @@
   "keywords": [
     "car",
     "useQuery",
-    "restful",
+    "API",
     "loading",
     "error",
     "success",
-    "action"
+    "action",
+    "json-server"
   ],
   "author": "Stems",
   "license": "MIT"
