@@ -31,9 +31,7 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
         timeout = 0;
         clearInterval(watchElement);
       }
-      // console.log(timeout);
-      console.log(rectCarousel, widthTargetDrag);
-    }, 10);
+    }, 30);
   }, [refCarousel, widthTargetDrag]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
