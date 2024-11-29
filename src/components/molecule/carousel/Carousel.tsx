@@ -13,16 +13,16 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
     refCarousel,
     indexCurrent,
     moveX,
-    widthTargetDarg,
+    widthTargetDrag,
     dragEvent,
     touchEvent,
   } = useDragCarousel({ dataSize: dataSize, gap: gap });
-  console.log(widthTargetDarg - gap);
+  console.log(widthTargetDrag);
 
   return (
-    <Layout ref={refCarousel} $width={widthTargetDarg - gap}>
+    <Layout ref={refCarousel} $width={widthTargetDrag - gap}>
       <DragSpace
-        $widthTargetDarg={widthTargetDarg}
+        $widthTargetDrag={widthTargetDrag}
         $indexCurrent={indexCurrent}
         $moveX={moveX}
         $dataSize={dataSize}
