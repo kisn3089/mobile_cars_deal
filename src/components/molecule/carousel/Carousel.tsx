@@ -28,7 +28,7 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
         $gap={gap}
         onMouseDown={dragEvent}
         onTouchStart={touchEvent}>
-        {children} {/* 여기에 ref를 걸고 싶어 */}
+        {children}
       </DragSpace>
     </Layout>
   );
