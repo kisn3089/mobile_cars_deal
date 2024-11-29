@@ -20,7 +20,6 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
       const rectCarousel =
         refCarousel.current.children[0].children[0].getBoundingClientRect()
           .width;
-      console.log(rectCarousel);
 
       if (rectCarousel !== widthTargetDrag) {
         setWidthTargetDrag(rectCarousel + gap);
