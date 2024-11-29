@@ -17,6 +17,7 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
     dragEvent,
     touchEvent,
   } = useDragCarousel({ dataSize: dataSize, gap: gap });
+  console.log(widthTargetDarg - gap);
 
   return (
     <Layout ref={refCarousel} $width={widthTargetDarg - gap}>
