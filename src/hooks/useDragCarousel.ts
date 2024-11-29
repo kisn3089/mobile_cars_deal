@@ -15,25 +15,26 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
   useEffect(() => {
     if (!refCarousel.current?.children[0].children[0].getBoundingClientRect)
       return;
-    const rectCarousel =
-      refCarousel.current.children[0].children[0].getBoundingClientRect().width;
-    setWidthTargetDrag(rectCarousel + gap);
-    console.log(rectCarousel);
 
-    // const watchElement = setInterval(() => {
-    //   if (!refCarousel.current) return;
-    //   const rectCarousel =
-    //     refCarousel.current.children[0].getBoundingClientRect().width;
-    //   console.log(rectCarousel, widthTargetDrag);
+    let timeout = 0;
+    const watchElement = setInterval(() => {
+      if (!refCarousel.current) return;
 
-    //   if (rectCarousel !== widthTargetDrag) {
-    //     setWidthTargetDrag(rectCarousel + gap);
-    //     clearInterval(watchElement);
-    //   }
-    // }, 10);
-  }, [
-    refCarousel.current?.children[0].children[0].getBoundingClientRect().width,
-  ]);
+      const rectCarousel =
+        refCarousel.current.children[0].getBoundingClientRect().width;
+      if (timeout === 10) clearInterval(watchElement);
+
+      if (rectCarousel + gap === widthTargetDrag) timeout++;
+
+      if (rectCarousel + gap !== widthTargetDrag) {
+        setWidthTargetDrag(rectCarousel + gap);
+        timeout = 0;
+        clearInterval(watchElement);
+      }
+      // console.log(timeout);
+      console.log(rectCarousel, widthTargetDrag);
+    }, 10);
+  }, [refCarousel, widthTargetDrag]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
   const onDragChange = useMemo(
