@@ -14,30 +14,20 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
 
   useEffect(() => {
     if (!refCarousel.current) return;
-    const rectCarousel =
-      refCarousel.current.children[0].children[0].getBoundingClientRect().width;
-    setWidthTargetDrag(rectCarousel + gap);
 
-    // const handleResize = (entries: ResizeObserverEntry[]) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.target === refCarousel.current) {
-    //       const rectCarousel =
-    //         refCarousel.current.children[0].children[0].getBoundingClientRect()
-    //           .width;
-    //       setWidthTargetDrag(rectCarousel + gap);
-    //     }
-    //   });
-    // };
+    const watchElement = setInterval(() => {
+      if (!refCarousel.current) return;
+      const rectCarousel =
+        refCarousel.current.children[0].children[0].getBoundingClientRect()
+          .width;
+      console.log(rectCarousel);
 
-    // const observer = new ResizeObserver(handleResize);
-    // observer.observe(refCarousel.current);
-
-    // Clean up on unmount
-    // return () => {
-    //   observer.disconnect();
-    // };
-  }, [widthTargetDrag]);
-  // }, [gap]);
+      if (rectCarousel !== widthTargetDrag) {
+        setWidthTargetDrag(rectCarousel + gap);
+        clearInterval(watchElement);
+      }
+    }, 10);
+  }, [refCarousel]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
   const onDragChange = useMemo(

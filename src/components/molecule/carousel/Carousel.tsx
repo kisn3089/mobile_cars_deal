@@ -17,11 +17,10 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
     dragEvent,
     touchEvent,
   } = useDragCarousel({ dataSize: dataSize, gap: gap });
-  console.log(widthTargetDrag);
-
   return (
-    <Layout ref={refCarousel} $width={widthTargetDrag - gap}>
+    <Layout $width={widthTargetDrag - gap}>
       <DragSpace
+        ref={refCarousel}
         $widthTargetDrag={widthTargetDrag}
         $indexCurrent={indexCurrent}
         $moveX={moveX}
@@ -29,7 +28,7 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
         $gap={gap}
         onMouseDown={dragEvent}
         onTouchStart={touchEvent}>
-        {children}
+        {children} {/* 여기에 ref를 걸고 싶어 */}
       </DragSpace>
     </Layout>
   );
