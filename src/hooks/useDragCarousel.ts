@@ -10,37 +10,41 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
   const [indexCurrent, setIndexCurrent] = useState(0);
   const [moveX, setMoveX] = useState(0);
   const refCarousel = useRef<HTMLDivElement>(null);
-  const [widthTargetDarg, setWidthTargetDrag] = useState(0);
+  const [widthTargetDrag, setWidthTargetDrag] = useState(0);
 
   useEffect(() => {
     if (!refCarousel.current) return;
+    const rectCarousel =
+      refCarousel.current.children[0].children[0].getBoundingClientRect().width;
+    setWidthTargetDrag(rectCarousel + gap);
 
-    const handleResize = (entries: ResizeObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.target === refCarousel.current) {
-          const rectCarousel =
-            refCarousel.current.children[0].children[0].getBoundingClientRect()
-              .width;
-          setWidthTargetDrag(rectCarousel + gap);
-        }
-      });
-    };
+    // const handleResize = (entries: ResizeObserverEntry[]) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.target === refCarousel.current) {
+    //       const rectCarousel =
+    //         refCarousel.current.children[0].children[0].getBoundingClientRect()
+    //           .width;
+    //       setWidthTargetDrag(rectCarousel + gap);
+    //     }
+    //   });
+    // };
 
-    const observer = new ResizeObserver(handleResize);
-    observer.observe(refCarousel.current);
+    // const observer = new ResizeObserver(handleResize);
+    // observer.observe(refCarousel.current);
 
     // Clean up on unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, [gap]);
+    // return () => {
+    //   observer.disconnect();
+    // };
+  }, [widthTargetDrag]);
+  // }, [gap]);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
   const onDragChange = useMemo(
     () => (moveX: number) => {
-      setMoveX(inRange(moveX, -widthTargetDarg, widthTargetDarg));
+      setMoveX(inRange(moveX, -widthTargetDrag, widthTargetDrag));
     },
-    [widthTargetDarg]
+    [widthTargetDrag]
   );
 
   /* DragEnd Event  */
@@ -50,9 +54,9 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
 
     /* moveX = 드래그 시작점부터 종료까지 움직인 x값 ( transX와 같다 ) */
     /* 드래그 범위가 캐러셀 요소의 크기의 3 / 1을 넘기면 */
-    if (moveX < -widthTargetDarg / 3)
+    if (moveX < -widthTargetDrag / 3)
       setIndexCurrent(inRange(indexCurrent + 1, 0, maxIndex));
-    if (moveX > widthTargetDarg / 3)
+    if (moveX > widthTargetDrag / 3)
       setIndexCurrent(inRange(indexCurrent - 1, 0, maxIndex));
 
     setMoveX(0);
@@ -62,7 +66,7 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
     refCarousel,
     indexCurrent,
     moveX,
-    widthTargetDarg,
+    widthTargetDrag,
     dragEvent: dragEvent({ onDragChange, onDragEnd }),
     touchEvent: touchEvent({ onDragChange, onDragEnd }),
   };
