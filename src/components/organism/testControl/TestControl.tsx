@@ -7,7 +7,6 @@ import {
   ControlContent,
 } from "./TestControl.style";
 import { useQueryClient } from "@tanstack/react-query";
-import { CAR_LIST } from "@/util/contstants";
 
 const controlJson = [
   {
