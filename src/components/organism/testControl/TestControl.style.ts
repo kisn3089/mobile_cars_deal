@@ -20,7 +20,7 @@ export const Absolute = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -30,14 +30,15 @@ export const Wrapper = styled.div`
 export const ControlContent = styled.p`
   font-size: ${({ theme }) => theme.fontSize[14]};
   font-weight: ${({ theme }) => theme.fontWeight[500]};
+  user-select: none;
 `;
 
 export const Circle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0 8px;
   height: 40px;
-  /* border-radius: 100%; */
   border-radius: 8px;
   padding: 0px 12px;
   background-color: ${({ theme }) => theme.palette.white};
@@ -49,4 +50,5 @@ export const Circle = styled.div`
 export const Svg = styled.img`
   width: 24px;
   height: 24px;
+  user-select: none;
 `;

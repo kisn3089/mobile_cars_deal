@@ -3,7 +3,7 @@ import {
   Circle,
   Absolute,
   Svg,
-  Wrapper,
+  Column,
   ControlContent,
 } from "./TestControl.style";
 import { useQueryClient } from "@tanstack/react-query";
@@ -28,7 +28,7 @@ const TestControl = () => {
 
   return (
     <Absolute>
-      <Wrapper>
+      <Column>
         {controlJson.map((property) => (
           <Link
             to={property.to}
@@ -40,7 +40,7 @@ const TestControl = () => {
             </Circle>
           </Link>
         ))}
-      </Wrapper>
+      </Column>
     </Absolute>
   );
 };
