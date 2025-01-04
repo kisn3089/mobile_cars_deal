@@ -1,24 +1,46 @@
 import { Link } from "react-router-dom";
-import { Circle, Absolute, Svg } from "./TestControl.style";
+import {
+  Circle,
+  Absolute,
+  Svg,
+  Column,
+  ControlContent,
+} from "./TestControl.style";
+import { useQueryClient } from "@tanstack/react-query";
+import { CAR_LIST } from "@/util/contstants";
+
+const controlJson = [
+  {
+    to: "/list/query",
+    src: "/assets/icons/ic_success.svg",
+    content: "성공 환경",
+  },
+  {
+    to: "/loading/query",
+    src: "/assets/icons/ic_loading.svg",
+    content: "로딩 환경",
+  },
+  { to: "/fail", src: "/assets/icons/ic_fail.svg", content: "실패 환경" },
+];
 
 const TestControl = () => {
+  const queryClient = useQueryClient();
+
   return (
     <Absolute>
-      <Link to={"/list/query"}>
-        <Circle>
-          <Svg src="/assets/icons/ic_success.svg" />
-        </Circle>
-      </Link>
-      <Link to={"/loading/query"}>
-        <Circle>
-          <Svg src="/assets/icons/ic_loading.svg" />
-        </Circle>
-      </Link>
-      <Link to={"/fail"}>
-        <Circle>
-          <Svg src="/assets/icons/ic_fail.svg" />
-        </Circle>
-      </Link>
+      <Column>
+        {controlJson.map((property) => (
+          <Link
+            to={property.to}
+            key={property.to}
+            onClick={() => queryClient.clear()}>
+            <Circle>
+              <ControlContent>{property.content}</ControlContent>
+              <Svg src={property.src} />
+            </Circle>
+          </Link>
+        ))}
+      </Column>
     </Absolute>
   );
 };

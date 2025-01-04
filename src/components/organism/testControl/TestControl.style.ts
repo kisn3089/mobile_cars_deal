@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Absolute = styled.div`
   position: fixed;
   top: 50%;
-  left: 10%;
-  transform: translate3d(50%, -50%, 0);
+  left: 3%;
+  transform: translate3d(25%, -50%, 0);
   box-shadow: ${({ theme }) =>
     `0px 0px 10px 1px ${theme.palette.primary.brand400}`};
   border-radius: 12px;
@@ -20,11 +20,27 @@ export const Absolute = styled.div`
   }
 `;
 
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 8px;
+`;
+
+export const ControlContent = styled.p`
+  font-size: ${({ theme }) => theme.fontSize[14]};
+  font-weight: ${({ theme }) => theme.fontWeight[500]};
+  user-select: none;
+`;
+
 export const Circle = styled.div`
-  width: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 8px;
   height: 40px;
-  border-radius: 100%;
-  padding: 4px;
+  border-radius: 8px;
+  padding: 0px 12px;
   background-color: ${({ theme }) => theme.palette.white};
   box-shadow: ${({ theme }) =>
     `0px 0px 10px 5px ${theme.palette.primary.brand100}`};
@@ -32,6 +48,7 @@ export const Circle = styled.div`
 `;
 
 export const Svg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  user-select: none;
 `;
