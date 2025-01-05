@@ -7,7 +7,6 @@ import {
   ControlContent,
 } from "./TestControl.style";
 import { useQueryClient } from "@tanstack/react-query";
-import { CAR_LIST } from "@/util/contstants";
 
 const controlJson = [
   {
@@ -21,10 +20,21 @@ const controlJson = [
     content: "로딩 환경",
   },
   { to: "/fail", src: "/assets/icons/ic_fail.svg", content: "실패 환경" },
+  {
+    to: "",
+    src: "/assets/icons/ic_github.svg",
+    content: "회고 보기",
+    onClick: () => window.open("https://github.com/kisn3089/mobile_cars_deal"),
+  },
 ];
 
 const TestControl = () => {
   const queryClient = useQueryClient();
+
+  const clickByLink = (clickEvent?: () => void) => {
+    if (clickEvent) clickEvent();
+    return queryClient.clear();
+  };
 
   return (
     <Absolute>
@@ -33,7 +43,7 @@ const TestControl = () => {
           <Link
             to={property.to}
             key={property.to}
-            onClick={() => queryClient.clear()}>
+            onClick={() => clickByLink(property.onClick)}>
             <Circle>
               <ControlContent>{property.content}</ControlContent>
               <Svg src={property.src} />
