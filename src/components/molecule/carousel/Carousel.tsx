@@ -17,6 +17,7 @@ const Carousel = ({ children, dataSize, gap }: CarouselProps) => {
     dragEvent,
     touchEvent,
   } = useDragCarousel({ dataSize: dataSize, gap: gap });
+
   return (
     <Layout $width={widthTargetDrag - gap}>
       <DragSpace
