@@ -1,5 +1,5 @@
 import { dragEvent, inRange, touchEvent } from "@/util/dragEvent";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 type useDragCarouselProps = {
   dataSize: number;
