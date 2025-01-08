@@ -1,5 +1,5 @@
 import { dragEvent, inRange, touchEvent } from "@/util/dragEvent";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 type useDragCarouselProps = {
   dataSize: number;
@@ -12,27 +12,14 @@ export const useDragCarousel = ({ dataSize, gap }: useDragCarouselProps) => {
   const refCarousel = useRef<HTMLDivElement>(null);
   const [widthTargetDrag, setWidthTargetDrag] = useState(0);
 
-  useEffect(() => {
-    if (!refCarousel.current?.children[0].children[0].getBoundingClientRect)
-      return;
-
-    let timeout = 0;
-    const watchElement = setInterval(() => {
-      if (!refCarousel.current) return;
-
-      const rectCarousel =
-        refCarousel.current.children[0].getBoundingClientRect().width;
-      if (timeout === 10) clearInterval(watchElement);
-
-      if (rectCarousel + gap === widthTargetDrag) timeout++;
-
-      if (rectCarousel + gap !== widthTargetDrag) {
-        setWidthTargetDrag(rectCarousel + gap);
-        timeout = 0;
-        clearInterval(watchElement);
-      }
-    }, 30);
-  }, [refCarousel, widthTargetDrag]);
+  useLayoutEffect(() => {
+    // 폰트 로드 후 리페인팅한 값을 저장
+    document.fonts.ready.then(() => {
+      const rectElement =
+        refCarousel.current?.children[0].getBoundingClientRect();
+      if (rectElement) setWidthTargetDrag(rectElement.width + gap);
+    });
+  }, []);
 
   /* DragChange Event 드래그시 캐러셀 요소 밖으로 나가는걸 방지 */
   const onDragChange = useMemo(
