@@ -1,3 +1,7 @@
+# Deploy
+
+Vercel https://mobile-cars-deal.vercel.app/list/query
+
 # What's New
 
 `25.01.05`
